@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
@@ -36,12 +36,12 @@ export default function App() {
                         </View>
                     </View>
                     <View style={styles.botones}>
-                        <View style={styles.botonUsuario}>
-                        <Button  title="Editar contraseña" color='#C70039' > </Button>
-                        </View>
-                        <View style={styles.botonUsuario}>
-                        <Button title='Guardar Cambios' color='#C70039' ></Button>
-                        </View>
+                    <Pressable style={styles.button} >
+                  <Text style={styles.text}>Cambiar contraseña</Text>
+                   </Pressable>
+                   <Pressable style={styles.button}  >
+                  <Text style={styles.text}>Guardar cambios</Text>
+                   </Pressable>
 
                     </View>
                 </View>
@@ -148,14 +148,23 @@ const styles = StyleSheet.create({
         justifyContent: "center",
 
     },
-    botonUsuario:{
+    button: {
         flex:1,
-        alignItems:"center",
-        margin:5,
-        borderWidth: 1,
-        borderStyle: "solid",
-        borderColor: "#ced4da",
-     
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 7,
+        paddingHorizontal: 10,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: '#C70039',
+        margin: 10
+      },
+      text: {
+        fontSize: 12,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
       },
   
     
