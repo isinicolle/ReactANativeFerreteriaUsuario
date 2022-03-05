@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
@@ -15,80 +15,81 @@ export default function App() {
                 <View style={styles.contenedorControles}>
                     <View style={styles.cuenta}>
                         <View style={styles.contenedorSubtitlo}>
-                       
+
                             <Text style={styles.subtituloConfiguraciones}>Inicio</Text>
                         </View>
                         <View style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Dirrecciones de envio</Text></View>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Dirrecciones de envio</Text></View>
                             <View style={styles.nav}>
-                            <Icon name="chevron-right" size={25}></Icon>
+                                <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </View>
                         <View style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Información de cuenta</Text></View>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Información de cuenta</Text></View>
                             <View style={styles.nav}>
-                            <Icon name="chevron-right" size={25}></Icon>
+                                <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </View>
                         <View style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Historial de compras</Text></View>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Historial de compras</Text></View>
                             <View style={styles.nav}>
-                            <Icon name="chevron-right" size={25}></Icon>
+                                <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </View>
                         <View style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Cerrar sesion</Text></View>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Cerrar sesion</Text></View>
                             <View style={styles.nav}>
-                            <Icon.Button name="chevron-right" size={25} backgroundColor="#ffffff" color="#111111"></Icon.Button>
+                                <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </View>
-                        
+
                     </View>
                     <View style={styles.cuenta2}>
                         <View style={styles.contenedorSubtitlo}>
-                                
+
                             <Text style={styles.subtituloConfiguraciones}>Acerca de</Text>
                         </View>
                         <View style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Condiciones de uso</Text></View>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Condiciones de uso</Text></View>
                             <View style={styles.nav}>
-                            <Icon name="chevron-right" size={25}></Icon>
+                                <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </View>
                         <View style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Privacidad</Text></View>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Privacidad</Text></View>
                             <View style={styles.nav}>
-                            <Icon name="chevron-right" size={25}></Icon>
+                                <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </View>
-                        <View style={styles.contenedorTexto}>
+                        <TouchableOpacity style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
-                            <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Misión y vision</Text></View>
-                            <View style={styles.nav}>
-                            <Icon name="chevron-right" size={25}></Icon>
+                                <Icon name="location-pin" size={20}></Icon>
+                                <Text style={styles.texto}> Misión y vision</Text>
                             </View>
-                        </View>
-                      
+                            <View style={styles.nav}>
+                                <Icon name="chevron-right" size={25}></Icon>
+                            </View>
+                        </TouchableOpacity>
+
                     </View>
-                    
+
                 </View>
                 <View style={styles.footer}>
-                        <Text style={styles.textoFooter}>Version 1.1.1.1</Text>
-                        <Text style={styles.textoFooter}>Derechos reservados UNICAH@</Text>
-                    </View>
+                    <Text style={styles.textoFooter}>Version 1.1.1.1</Text>
+                    <Text style={styles.textoFooter}>Derechos reservados UNICAH@</Text>
+                </View>
             </View>
 
         </View>
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-      margin:5,
+        margin: 5,
     },
     opcion: {
         flex: 2,
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "flex-end",
     },
-   
+
     subtituloConfiguraciones: {
         color: "#112226",
         fontSize: 25,
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-       margin:5
+        margin: 5
     },
     texto: {
         color: "#112226",
@@ -204,8 +205,8 @@ const styles = StyleSheet.create({
         color: 'rgb( 194, 192, 192)',
         fontSize: 10,
         fontWeight: "200",
-        opacity:20,
-        padding:10
+        opacity: 20,
+        padding: 10
     },
 
 });
