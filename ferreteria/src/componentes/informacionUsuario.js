@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
-
 
 export default function App() {
     return (
@@ -16,32 +14,42 @@ export default function App() {
                     <View style={styles.entradas}>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  Nombre</Text>
-                            <TextInput placeholder="Nombre" style={styles.escribir}></TextInput>
+                            <View style={styles.contornoentrada}>
+                                <TextInput placeholder="Nombre" style={styles.escribir}></TextInput>
+                            </View>
                         </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  Apellido</Text>
-                            <TextInput placeholder="Apellidos" style={styles.escribir}></TextInput>
-                        </View>
+                            <View style={styles.contornoentrada}>
+                                <TextInput placeholder="Apellido" style={styles.escribir}></TextInput>
+                            </View>                      
+                              </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  Telefono</Text>
-                            <TextInput placeholder="Telefono" style={styles.escribir}></TextInput>
-                        </View>
+                            <View style={styles.contornoentrada}>
+                                <TextInput placeholder="Telefono" style={styles.escribir}></TextInput>
+                            </View>                  
+                                  </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  DNI</Text>
-                            <TextInput placeholder="DNI" style={styles.escribir}></TextInput>
-                        </View>
+                            <View style={styles.contornoentrada}>
+                                <TextInput placeholder="DNI" style={styles.escribir}></TextInput>
+                            </View>                       
+                             </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  RTN</Text>
-                            <TextInput placeholder="RTN" style={styles.escribir}></TextInput>
-                        </View>
+                            <View style={styles.contornoentrada}>
+                                <TextInput placeholder="RTN" style={styles.escribir}></TextInput>
+                            </View>                     
+                               </View>
                     </View>
                     <View style={styles.botones}>
-                    <Pressable style={styles.button} >
-                  <Text style={styles.text}>Cambiar contraseña</Text>
-                   </Pressable>
-                   <Pressable style={styles.button}  >
-                  <Text style={styles.text}>Guardar cambios</Text>
-                   </Pressable>
+                        <Pressable style={styles.button} >
+                            <Text style={styles.text}>Cambiar contraseña</Text>
+                        </Pressable>
+                        <Pressable style={styles.button}  >
+                            <Text style={styles.text}>Guardar cambios</Text>
+                        </Pressable>
 
                     </View>
                 </View>
@@ -119,27 +127,28 @@ const styles = StyleSheet.create({
 
     },
     individualEntras: {
-
         flex: 1,
         flexDirection: "column",
         alignItems: "flex-start",
-        justifyContent: "flex-start",
-        padding: 10
+        justifyContent: "center",
+        padding: 5
+    },
+    contornoentrada: {
+        flex: 0,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        padding: '5%',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#6B6B6B',
+        marginVertical: 5
     },
     escribir: {
         flex: 1,
-        alignItems: "flex-start",
-        padding: 10,
-        margin: 5,
-        fontSize: 12,
-        fontWeight: "400",
-        width: "169%",
-        color: "#495057",
-        backgroundColor: "#fff",
-        borderWidth: 1,
-        borderStyle: "solid",
-        borderColor: "#ced4da",
-        borderRadius: 10,
+        fontSize: 18,
+        
     },
     botones: {
         flex: 1,
@@ -149,7 +158,7 @@ const styles = StyleSheet.create({
 
     },
     button: {
-        flex:1,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 7,
@@ -158,16 +167,16 @@ const styles = StyleSheet.create({
         elevation: 3,
         backgroundColor: '#C70039',
         margin: 10
-      },
-      text: {
+    },
+    text: {
         fontSize: 12,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-      },
-  
-    
+    },
+
+
     footer: {
         flex: 3,
         flexDirection: "column",
