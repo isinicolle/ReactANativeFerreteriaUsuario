@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
@@ -14,32 +14,38 @@ export default function App() {
                 </View>
                 <View style={styles.contenedorControles}>
                     <View style={styles.entradas}>
-                      <View style={styles.individualEntras}>
-                      <Text style={styles.tituloEntradas}>  Nombre</Text>
-                      <TextInput placeholder="Nombre" style={styles.escribir}></TextInput>
-                      </View>
-                      <View style={styles.individualEntras}>
-                      <Text style={styles.tituloEntradas}>  Apellido</Text>
-                      <TextInput placeholder="Apellidos" style={styles.escribir}></TextInput>
-                      </View>
-                      <View style={styles.individualEntras}>
-                      <Text style={styles.tituloEntradas}>  Telefono</Text>
-                      <TextInput placeholder="Telefono" style={styles.escribir}></TextInput>
-                      </View>
-                      <View style={styles.individualEntras}>
-                      <Text style={styles.tituloEntradas}>  DNI</Text>
-                      <TextInput placeholder="DNI" style={styles.escribir}></TextInput>
-                      </View>
-                      <View style={styles.individualEntras}>
-                      <Text style={styles.tituloEntradas}>  RTN</Text>
-                      <TextInput placeholder="RTN" style={styles.escribir}></TextInput>
-                      </View>
+                        <View style={styles.individualEntras}>
+                            <Text style={styles.tituloEntradas}>  Nombre</Text>
+                            <TextInput placeholder="Nombre" style={styles.escribir}></TextInput>
+                        </View>
+                        <View style={styles.individualEntras}>
+                            <Text style={styles.tituloEntradas}>  Apellido</Text>
+                            <TextInput placeholder="Apellidos" style={styles.escribir}></TextInput>
+                        </View>
+                        <View style={styles.individualEntras}>
+                            <Text style={styles.tituloEntradas}>  Telefono</Text>
+                            <TextInput placeholder="Telefono" style={styles.escribir}></TextInput>
+                        </View>
+                        <View style={styles.individualEntras}>
+                            <Text style={styles.tituloEntradas}>  DNI</Text>
+                            <TextInput placeholder="DNI" style={styles.escribir}></TextInput>
+                        </View>
+                        <View style={styles.individualEntras}>
+                            <Text style={styles.tituloEntradas}>  RTN</Text>
+                            <TextInput placeholder="RTN" style={styles.escribir}></TextInput>
+                        </View>
                     </View>
                     <View style={styles.botones}>
+                        <View style={styles.botonUsuario}>
+                        <Button  title="Editar contraseña" color='#C70039' > </Button>
+                        </View>
+                        <View style={styles.botonUsuario}>
+                        <Button title='Guardar Cambios' color='#C70039' ></Button>
+                        </View>
 
                     </View>
-               </View>
-               
+                </View>
+
                 <View style={styles.footer}>
                     <Text style={styles.textoFooter}>Version 1.1.1.1</Text>
                     <Text style={styles.textoFooter}>Derechos reservados UNICAH@</Text>
@@ -78,10 +84,10 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         padding: 15,
         backgroundColor: "#fff"
-        
-        },
+
+    },
     tituloConfiguraciones: {
-        
+
         color: "#110000",
         fontSize: 18,
         fontWeight: "500",
@@ -100,7 +106,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#fff",
         padding: 10,
-        margin:10,
+        margin: 10,
         borderWidth: 1,
         borderColor: "#dedede",
         borderRadius: 25,
@@ -110,38 +116,49 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-      
+
     },
-    individualEntras:{
-        
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    padding:10
+    individualEntras: {
+
+        flex: 1,
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        padding: 10
     },
-    escribir:{
-        flex:1,
-        alignItems:"flex-start",
-        padding:10,
+    escribir: {
+        flex: 1,
+        alignItems: "flex-start",
+        padding: 10,
         margin: 5,
         fontSize: 12,
-        fontWeight:"400",
-        width:"169%",
+        fontWeight: "400",
+        width: "169%",
         color: "#495057",
-        backgroundColor:"#fff",
-        borderWidth:1,
-        borderStyle:"solid",
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderStyle: "solid",
         borderColor: "#ced4da",
         borderRadius: 10,
-      },
-    botones:{
+    },
+    botones: {
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-       
+
     },
+    botonUsuario:{
+        flex:1,
+        alignItems:"center",
+        margin:5,
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderColor: "#ced4da",
+     
+      },
+  
+    
     footer: {
         flex: 3,
         flexDirection: "column",
