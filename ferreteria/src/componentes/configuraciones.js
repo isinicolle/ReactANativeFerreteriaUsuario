@@ -19,21 +19,38 @@ export default function App() {
                             <Text style={styles.subtituloConfiguraciones}>Inicio</Text>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Dirección de envío</Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Dirrecciones de envio</Text></View>
+                            <View style={styles.nav}>
+                            <Icon name="chevron-right" size={25}></Icon>
+                            </View>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Información de cuenta </Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Información de cuenta</Text></View>
+                            <View style={styles.nav}>
+                            <Icon name="chevron-right" size={25}></Icon>
+                            </View>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Historial de compras</Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Historial de compras</Text></View>
+                            <View style={styles.nav}>
+                            <Icon name="chevron-right" size={25}></Icon>
+                            </View>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Cerrar Sesion</Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Cerrar sesion</Text></View>
+                            <View style={styles.nav}>
+                            <Icon.Button name="chevron-right" size={25} backgroundColor="#ffffff" color="#111111"></Icon.Button>
+                            </View>
                         </View>
+                        
                     </View>
                     <View style={styles.cuenta2}>
                         <View style={styles.contenedorSubtitlo}>
@@ -41,16 +58,28 @@ export default function App() {
                             <Text style={styles.subtituloConfiguraciones}>Acerca de</Text>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Condiciones de uso</Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Condiciones de uso</Text></View>
+                            <View style={styles.nav}>
+                            <Icon name="chevron-right" size={25}></Icon>
+                            </View>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Privacidad </Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Privacidad</Text></View>
+                            <View style={styles.nav}>
+                            <Icon name="chevron-right" size={25}></Icon>
+                            </View>
                         </View>
                         <View style={styles.contenedorTexto}>
-                        <Icon name="location-pin" size={20}></Icon>
-                            <Text style={styles.texto}> Misión y visión</Text>
+                            <View style={styles.opcion}>
+                            <Icon name="location-pin" size={20}></Icon>
+                            <Text style={styles.texto}> Misión y vision</Text></View>
+                            <View style={styles.nav}>
+                            <Icon name="chevron-right" size={25}></Icon>
+                            </View>
                         </View>
                       
                     </View>
@@ -105,6 +134,18 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "flex-start",
       margin:5,
+    },
+    opcion: {
+        flex: 2,
+        flexDirection: "row",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+    },
+    nav: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
     },
    
     subtituloConfiguraciones: {
