@@ -1,29 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ScrollView,TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import PantallaInicio from './src/Panallas/InicioSesion'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <Pressable style={styles.boton}>Click me</Pressable>
-
-    </View>
+    <ScrollView style={{flex:1}}>
+      <PantallaInicio />
+    </ScrollView>
+    
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  boton:
-  {
-    backgroundColor: '#495057',
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
