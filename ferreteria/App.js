@@ -3,14 +3,14 @@ import { ScrollView,TextInput, StyleSheet, Text, View,Image,SafeAreaView} from '
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import PantallaInicio from './src/Panallas/InicioSesion'
 import PantallaRegistro from './src/Panallas/crearUsuario'
-import PantallaRegistroDos from './src/Panallas/registroDos'
-
+import Registro from './src/Panallas/registroTerminado'
+import Contrasena from './src/Panallas/olvidarContrasenia'
+import Correo from './src/Panallas/confirmarCorreo'
 
 export default function App() {
   return (
     <ScrollView style={{flex:1}}>
-      <PantallaRegistroDos/>
+      <Correo/>
     </ScrollView>
-    
   );
 }

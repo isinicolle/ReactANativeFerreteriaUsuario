@@ -2,28 +2,26 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component} from 'react';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Picker} from '../componentes/'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
 
-const Pantalla=() => {
-    
+export default class olvidarcontra extends Component{
+  render() {
   return (
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
-    <Text style={styles.header}>¡Nos encantará que seas parte de nosotros!</Text>
+    <Text style={styles.header}>¿Necesitas ayuda para recuperar tu contraseña?</Text>
   
     <View style={styles.tarjeta}>
-        <TextBox text={'Telefono'} icon={'phone'} />
+        <Text style={styles.header}>Ingresa el correo asocaido a tu cuenta</Text>
         <TextBox text={'Correo electrónico'} icon={'email'} />
-        <Picker enabled={true} mode="dropdown" text={'Departamento'}></Picker>
-        <PasswordBox text={'Confirmar contraseña'} />
         <Boton text={'Continuar'} />
     </View>
     <Footer/>
   </SafeAreaView>
   );
 }
-
+}
 
 
 const styles = StyleSheet.create({
@@ -98,5 +96,3 @@ const styles = StyleSheet.create({
   }
 
 })
-
-export default Pantalla;
