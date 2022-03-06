@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
 export default function App() {
     return (
@@ -14,33 +15,28 @@ export default function App() {
                     <View style={styles.entradas}>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  Nombre</Text>
-                            <View style={styles.contornoentrada}>
-                                <TextInput placeholder="Nombre" style={styles.escribir}></TextInput>
-                            </View>
+                            <TextBox text={'Nombre'} icon={'text-format'}/>
+
                         </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  Apellido</Text>
-                            <View style={styles.contornoentrada}>
-                                <TextInput placeholder="Apellido" style={styles.escribir}></TextInput>
-                            </View>                      
+                            <TextBox text={'Apellido'} icon={'text-format'}/>
+                    
                               </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  Telefono</Text>
-                            <View style={styles.contornoentrada}>
-                                <TextInput placeholder="Telefono" style={styles.escribir}></TextInput>
-                            </View>                  
+                            <TextBox text={'Telefono'} icon={'phone'}/>
+                
                                   </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  DNI</Text>
-                            <View style={styles.contornoentrada}>
-                                <TextInput placeholder="DNI" style={styles.escribir}></TextInput>
-                            </View>                       
+                            <TextBox text={'DNI'} icon={'email'}/>
+                   
                              </View>
                         <View style={styles.individualEntras}>
                             <Text style={styles.tituloEntradas}>  RTN</Text>
-                            <View style={styles.contornoentrada}>
-                                <TextInput placeholder="RTN" style={styles.escribir}></TextInput>
-                            </View>                     
+                            <TextBox text={'RTN'} icon={'email'}/>
+                   
                                </View>
                     </View>
                     <View style={styles.botones}>
@@ -132,23 +128,6 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "center",
         padding: 5
-    },
-    contornoentrada: {
-        flex: 0,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        padding: '5%',
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#6B6B6B',
-        marginVertical: 5
-    },
-    escribir: {
-        flex: 1,
-        fontSize: 18,
-        
     },
     botones: {
         flex: 1,
