@@ -9,8 +9,6 @@ const TextBox = ({value,setValue,text,icon})=>{
         <Icons name={icon} size={20}/>
         <TextInput 
         style={styles.input}
-        value={value}
-        onChangeText={setValue} 
         autoComplete
         placeholder={text}/>
         </View>

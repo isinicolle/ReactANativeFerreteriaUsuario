@@ -10,7 +10,7 @@ import Correo from './src/Panallas/confirmarCorreo'
 export default function App() {
   return (
     <ScrollView style={{flex:1}}>
-      <Registro/>
+      <PantallaRegistro/>
     </ScrollView>
   );
 }

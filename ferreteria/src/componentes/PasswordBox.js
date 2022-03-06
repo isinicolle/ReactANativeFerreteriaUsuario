@@ -8,8 +8,6 @@ const TextBox = ({value,setValue,text})=>{
     <Icons name={'lock'} size={20}/>
         <TextInput 
         style={styles.input}
-        value={value}
-        onChangeText={setValue} 
         placeholder={text}
         secureTextEntry={true} />
         </View>

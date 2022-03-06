@@ -1,29 +1,56 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component} from 'react';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Alert} from 'react-native';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
+import { useState } from 'react';
 
-
-export default class crearUsuario extends Component{
-  render() {
+const Pantalla = ()=> {
+  const [nombre, setNombre]= useState(null);
+    const [correo, setCorreo]= useState(null);
+    const [contrasenia, setContrasenia]= useState(null);
+    const usuarioNuevo = async() =>{
+      if(!nombre || correo || contrasenia){
+        console.log("Escriba todos los datos");
+        Alert.alert("Ferretear","Revise sus datos")
+      }else{
+        try{
+        const respuesta = await fetch(
+          'http://192.168.0.10:6001/api/usuarioCliente/insertarUsuarioCliente',{
+            method: 'POST',
+           headers:{
+             Accept: 'application/json',
+             'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({
+             nombre_usuario: nombre,
+             contraenia_usuario: contrasenia,
+             correo_usuario: correo
+           })
+          });
+          const json = await respuesta.json();
+          console.log(json);
+          Alert.alert("Ferretear", "Peticion procesada");
+         } catch(error){
+           console.log(error);
+        }
+      }
+    }
   return (
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
     <Text style={styles.header}>¡Nos encantará que seas parte de nosotros!</Text>
   
     <View style={styles.tarjeta}>
-        <TextBox text={'Nombre'} icon={'face'} />
-        <TextBox text={'Correo electrónico'} icon={'email'} />
+        <TextBox text={'Nombre'} icon={'face'} value={nombre} onChangeText={setNombre}/>
+        <TextBox text={'Correo electrónico'} icon={'email'} value={correo} onChangeText={setCorreo}/>
         <PasswordBox text={'Contraseña'} />
-        <PasswordBox text={'Confirmar contraseña'} />
-        <Boton text={'Crear Cuenta'} />
+        <PasswordBox text={'Confirmar contraseña'} value={contrasenia} onChangeText={setContrasenia}/>
+        <Boton text={'Crear Cuenta'} onPress={usuarioNuevo}/>
     </View>
     <Footer/>
   </SafeAreaView>
   );
 }
-}
-
 
 const styles = StyleSheet.create({
   container: {
@@ -97,3 +124,5 @@ const styles = StyleSheet.create({
   }
 
 })
+
+export default Pantalla;
