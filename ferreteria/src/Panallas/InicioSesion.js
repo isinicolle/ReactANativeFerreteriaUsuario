@@ -12,7 +12,7 @@ const Pantalla = ()=> {
   
     <View style={styles.tarjeta}>
         <TextBox text={'Correo electrónico'} icon={'email'} />
-        <PasswordBox text={'Contraseña'} />
+        <PasswordBox text={'Contraseña'}/>
         <Boton text={'Iniciar Sesion'} />
         <HiperVinculo text={'¿Has olvidado la contraseña?'}/>
         <Text style={styles.h1Tarjeta}>¿Todavia no estas registrado?</Text>
