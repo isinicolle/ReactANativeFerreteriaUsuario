@@ -1,75 +1,40 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts} from '../componentes/'
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <View style={styles.contenedorApp}>
-                <View style={styles.contenedorTitulo}>
-
-                    <Text style={styles.tituloConfiguraciones}>  Información de usuario</Text>
-                </View>
-                <View style={styles.contenedorControles}>
-                    <View style={styles.entradas}>
-                        <View style={styles.individualEntras}>
-                            <Text style={styles.tituloEntradas}>  Nombre</Text>
-                            <TextBox text={'Nombre'} icon={'text-format'}/>
-
-                        </View>
-                        <View style={styles.individualEntras}>
-                            <Text style={styles.tituloEntradas}>  Apellido</Text>
-                            <TextBox text={'Apellido'} icon={'text-format'}/>
-                    
-                              </View>
-                        <View style={styles.individualEntras}>
-                            <Text style={styles.tituloEntradas}>  Telefono</Text>
-                            <TextBox text={'Telefono'} icon={'phone'}/>
-                
-                                  </View>
-                        <View style={styles.individualEntras}>
-                            <Text style={styles.tituloEntradas}>  DNI</Text>
-                            <TextBox text={'DNI'} icon={'email'}/>
-                   
-                             </View>
-                        <View style={styles.individualEntras}>
-                            <Text style={styles.tituloEntradas}>  RTN</Text>
-                            <TextBox text={'RTN'} icon={'email'}/>
-                   
-                               </View>
-                    </View>
-                    <View style={styles.botones}>
-                        <Pressable style={styles.button} >
-                            <Text style={styles.text}>Cambiar contraseña</Text>
-                        </Pressable>
-                        <Pressable style={styles.button}  >
-                            <Text style={styles.text}>Guardar cambios</Text>
-                        </Pressable>
-
-                    </View>
-                </View>
-
-                <View style={styles.footer}>
-                    <Text style={styles.textoFooter}>Version 1.1.1.1</Text>
-                    <Text style={styles.textoFooter}>Derechos reservados UNICAH@</Text>
-                </View>
-            </View>
-
-        </View>
+        <SafeAreaView style={styles.container}>
+        <View style={styles.tarjeta}>
+        <Texts text={'Nombre'}/>
+        <TextBox text={'Andres'} icon={'face'} />
+        <Texts text={'Apellido'}/>
+        <TextBox text={'Martinez'} icon={'face'} />
+        <Texts text={'Telefono'}/>
+        <TextBox text={'95560237'} icon={'phone'} />
+        <Texts text={'DNI'}/>
+        <TextBox text={'0501200711245'} icon={'book'} />
+        <Texts text={'RTN'}/>
+        <TextBox text={'1230501200711245'} icon={'text-format'} />
+            <Boton text={'Editar contraseña'}/>
+            <Boton text={'Guardar Cambios'}/>
+    </View>
+    <Footer/>
+  </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
 
     container: {
-        backgroundColor: '#e9ecef',
-        alignItems: 'center',
-        justifyContent: "center",
-        margin: 0,
-        padding: 20,
-        width: "100%",
-        height: "100%",
+        flex:1,
+        backgroundColor: '#F8F8F8',
+        alignItems:'center',
+        flexDirection:'column',
+        flexWrap:'wrap',
+        alignContent:'center',
+        height:'100%'
     },
     contenedorApp: {
         alignItems: "stretch",
@@ -170,5 +135,24 @@ const styles = StyleSheet.create({
         opacity: 20,
         padding: 10
     },
+    tarjeta:{
+        flex:1,
+        padding:10,
+        backgroundColor: '#fff',
+        shadowColor: "#C70039",
+        shadowOffset: 
+          {
+            width: 0,
+            height: 13,
+          },
+        
+        shadowOpacity: 0.44,
+        shadowRadius: 28,
+        elevation: 16,
+        width:'90%',
+        flexGrow:1,
+        borderRadius:20,
+        maxWidth:500
+        }
 
 });
