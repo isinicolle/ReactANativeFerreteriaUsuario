@@ -8,6 +8,8 @@ import Texts from './Text'
 
 import ListaProducto from './listaProductos'
 import TarjetaProducto from './tarjetaProducto';
+import TarjetaDireccion from './tarjetaDireccion';
+
 export {
 HiperVinculo,
 Boton,
@@ -17,5 +19,6 @@ Footer,
 Header,
 Texts,
 ListaProducto,
-TarjetaProducto
+TarjetaProducto,
+TarjetaDireccion
 }
