@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component} from 'react';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
 
@@ -13,7 +12,7 @@ export default class crearUsuario extends Component{
     <Text style={styles.header}>¡Nos encantará que seas parte de nosotros!</Text>
   
     <View style={styles.tarjeta}>
-        <TextBox text={'Nombre'} icon={'email'} />
+        <TextBox text={'Nombre'} icon={'face'} />
         <TextBox text={'Correo electrónico'} icon={'email'} />
         <PasswordBox text={'Contraseña'} />
         <PasswordBox text={'Confirmar contraseña'} />

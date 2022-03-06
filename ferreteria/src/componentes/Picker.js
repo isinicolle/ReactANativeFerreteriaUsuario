@@ -1,6 +1,6 @@
 import React from 'react'
 import { View,TextInput,StyleSheet,Text,TouchableOpacity, Picker } from 'react-native'
-import Icons from 'react-native-vector-icons/MaterialIcons'
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const Pickers = ({value,setValue,text,icon})=>{
     return (
@@ -12,7 +12,7 @@ const Pickers = ({value,setValue,text,icon})=>{
         onChangeText={setValue} 
         autoComplete
         placeholder={text}>
-           
+             <Picker.Item label={text}/>
         </Picker>
         </View>
     )
@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
         flex:1,
         fontSize:18,
         borderRadius:10,
+        borderWidth:0,
+        overflow:'hidden',
+        backgroundColor:'#fff',
     }
     
 

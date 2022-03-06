@@ -5,7 +5,6 @@ import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Pickers} from '../compone
 
 
 const Pantalla = ()=> {
-
   return (
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
@@ -13,11 +12,10 @@ const Pantalla = ()=> {
   
     <View style={styles.tarjeta}>
         <TextBox text={'Telefono'} icon={'phone'} />
-        <Picker>
-            <Picker.Item label="Departamento" value="disabled" color="#aaa"/>
-            <Picker.Item label="Cortes" value="Cortes"/>
-        </Picker>
-        <TextBox text={'Direccion'} icon={'phone'} />
+        <Pickers text={'Departamento'} icon={'city'} />
+        <Pickers text={'Ciudad'} icon={'city-variant'}>
+        </Pickers>
+        <TextBox text={'Direccion'} icon={'home'} />
         <Boton text={'Continuar'} />
     </View>
     <Footer/>
