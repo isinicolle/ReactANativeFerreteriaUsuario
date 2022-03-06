@@ -6,6 +6,8 @@ import Footer from './Footer'
 import Header from './Header'
 import Texts from './Text'
 
+import ListaProducto from './listaProductos'
+import TarjetaProducto from './tarjetaProducto';
 export {
 HiperVinculo,
 Boton,
@@ -14,4 +16,6 @@ TextBox,
 Footer,
 Header,
 Texts,
+ListaProducto,
+TarjetaProducto
 }
