@@ -145,10 +145,10 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         elevation: 3,
         backgroundColor: '#C70039',
-        margin: 10
+        margin: 5
     },
     text: {
-        fontSize: 12,
+        fontSize: 13,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
