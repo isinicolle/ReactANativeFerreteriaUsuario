@@ -6,9 +6,11 @@ import Footer from './Footer'
 import Header from './Header'
 import Texts from './Text'
 
-import ListaProducto from './listaProductos'
+import ListaProducto from './listaProductos';
 import TarjetaProducto from './tarjetaProducto';
 import TarjetaDireccion from './tarjetaDireccion';
+import ListaDireccion from './listaDirecciones';
+
 
 export {
 HiperVinculo,
@@ -20,5 +22,6 @@ Header,
 Texts,
 ListaProducto,
 TarjetaProducto,
-TarjetaDireccion
+TarjetaDireccion,
+ListaDireccion
 }

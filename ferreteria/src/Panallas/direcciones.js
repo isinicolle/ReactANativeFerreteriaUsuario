@@ -1,16 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header, TarjetaDireccion } from '../componentes/'
-
+import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header, TarjetaDireccion,ListaDireccion } from '../componentes/'
+const id=3;
 
 const Pantalla = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <Header busqueda={false} carrito={true} icon={'chevron-left'}></Header>
+            <Header busqueda={false} text={"Direcciones Envio"} carrito={true} icon={'chevron-left'}></Header>
             <View style={styles.tarjeta}>
-            <TarjetaDireccion nombre={'Jungkook'} direccion={"Juan ramon molina"} ciudad={"San Pedro Sula"} depto={"Cortes"} icon='email'/>
-
+            <ListaDireccion></ListaDireccion>
             </View>
 
             <Footer></Footer>
@@ -30,7 +29,10 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     tarjeta:{
-   flex:1
+   flex:1,
+   flexDirection: 'column',
+   alignContent: 'flex-start',
+
     }
 
     
