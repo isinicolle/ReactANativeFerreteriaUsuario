@@ -5,7 +5,8 @@ import TextBox from './TextBox'
 import Footer from './Footer'
 import Header from './Header'
 import ListaProducto from './listaProductos'
-import TarjetaProducto from './tarjetaProducto';
+import TarjetaProducto from './tarjetaProducto'
+import ListaCarrito from './listaCarrito'
 export {
 HiperVinculo,
 Boton,
@@ -14,5 +15,6 @@ TextBox,
 Footer,
 Header,
 ListaProducto,
-TarjetaProducto
+TarjetaProducto,
+ListaCarrito
 }
