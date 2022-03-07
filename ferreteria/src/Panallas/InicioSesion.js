@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
 
 const Pantalla = ()=> {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView >
+      <View style={styles.container}> 
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
     <Text style={styles.header}>¡Hola! Nos alegramos de verte de nuevo.</Text>
   
@@ -20,18 +21,17 @@ const Pantalla = ()=> {
         <Boton text={'Crear Cuenta'} />
     </View>
     <Footer/>
-  </SafeAreaView>
+      </View>
+  </ScrollView>
   );
 }
 
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
     backgroundColor: '#F8F8F8',
     alignItems:'center',
     flexDirection:'column',
-    flexWrap:'wrap',
     alignContent:'center',
     height:'100%'
   },
