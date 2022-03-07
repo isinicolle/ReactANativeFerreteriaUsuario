@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 
 
 export default function App() {
     return (
+        <ScrollView>
         <View style={styles.container}>
             <View style={styles.contenedorApp}>
                 <View style={styles.contenedorTitulo}>
@@ -93,6 +94,7 @@ export default function App() {
             </View>
 
         </View>
+        </ScrollView>
     );
 }
 

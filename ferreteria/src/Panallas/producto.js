@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable } from 'react-native';
+import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ScrollerNumero from '../componentes/ScrollerNumero'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
@@ -10,7 +10,8 @@ const Pantalla = () => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView>
+        <View style={styles.container}>
             <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
             <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')} />
             <Text style={styles.nomProducto}>Nombre Producto</Text>
@@ -65,7 +66,8 @@ const Pantalla = () => {
          
             </View>
             <Footer></Footer>
-        </SafeAreaView>
+        </View>
+        </ScrollView>
     );
 }
 

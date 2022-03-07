@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable, SafeAreaView, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts} from '../componentes/'
 
 export default function App() {
     return (
-        <SafeAreaView style={styles.container}>
+        <ScrollView>
+        <View style={styles.container}>
         <View style={styles.tarjeta}>
         <Texts text={'Nombre'}/>
         <TextBox text={'Andres'} icon={'face'} />
@@ -21,7 +22,8 @@ export default function App() {
             <Boton text={'Guardar Cambios'}/>
     </View>
     <Footer/>
-  </SafeAreaView>
+  </View>
+  </ScrollView>
     );
 }
 
