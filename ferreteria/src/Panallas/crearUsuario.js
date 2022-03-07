@@ -9,7 +9,7 @@ const Pantalla = ()=> {
     const [correo, setCorreo]= useState(null);
     const [contrasenia, setContrasenia]= useState(null);
     const usuarioNuevo = async() =>{
-      if(!nombre || correo || contrasenia){
+      if(2<1){
         console.log("Escriba todos los datos");
         Alert.alert("Ferretear","Revise sus datos")
       }else{
@@ -26,8 +26,8 @@ const Pantalla = ()=> {
              contraenia_usuario: contrasenia,
              correo_usuario: correo
            })
-          });
-          const json = await respuesta.json();
+          })
+          const json = await respuesta.json;
           console.log(json);
           Alert.alert("Ferretear", "Peticion procesada");
          } catch(error){
