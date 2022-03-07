@@ -1,18 +1,20 @@
 import React,{ useState,useEffect } from 'react';
 
-import { StyleSheet, ActivityIndicator, View, TouchableOpacity, Pressable, SafeAreaView, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, ActivityIndicator, View, TouchableOpacity, Pressable, SafeAreaView, FlatList, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts} from '../componentes/'
 const idcliente=7
 const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
+const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente="+idcliente
+
 const Configuraciones=() => {
     const [isLoading,setLoading]= useState(true);
-    const [data,setData]=useState([]);
-    const [nombre,setNombre]=useState([]);
-    const [apellido,setApellido]=useState([]);
-    const [telefono,setTelefono]=useState([]);
-    const [dni,setDni]=useState([]);
-    const [rtn,setRtn]=useState([]);
+    const [data,setData]=useState(null);
+    const [nombre,setNombre]=useState(null);
+    const [apellido,setApellido]=useState(null);
+    const [telefono,setTelefono]=useState(null);
+    const [dni,setDni]=useState(null);
+    const [rtn,setRtn]=useState(null);
 
 
     useEffect(()=>{
@@ -20,17 +22,39 @@ const Configuraciones=() => {
         .then((json)=>{
             setData(json.id_cliente);
             setNombre(json.nom_cliente);
-            setApellido(json.apellido_cliente)
-            setTelefono(json.tel_cliente)
-            setDni(json.DNI_Cliente)
-            setRtn(json.RTN)
-
-
-
+            setApellido(json.apellido_cliente);
+            setTelefono(json.tel_cliente);
+            setDni(json.DNI_Cliente);
+            setRtn(json.RTN);
         })
         .catch((error)=>console.log(error))
         .finally(setLoading(false));
     })
+
+    const presGuardarCambio= async() => {
+      try {
+          const respuesta = await fetch(
+           clienteActu,{
+               method: 'PUT',
+               headers:{
+                   Accept: 'application/json',
+                   'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    nom_cliente: nombre,
+                    apellido_cliente: apellido,
+                    RTN: rtn,
+                    DNI_Cliente: dni,
+                    tel_cliente: telefono,
+                })
+            
+               } );
+               const json= await respuesta.json();
+               console.log(json);
+               Alert.alert("MEDI","Peticion procesada");
+      } catch (error) {
+          console.error(error);
+      } 
+    }
     return (
      
         <ScrollView>
@@ -50,8 +74,8 @@ const Configuraciones=() => {
         <TextBox text={'0501200711245'} setValue={setDni} value={dni} icon={'book'} />
         <Texts text={'RTN'}/>
         <TextBox text={'1230501200711245'} setValue={setRtn} value={rtn} icon={'text-format'} />
-            <Boton text={'Editar contraseña'}/>
-            <Boton text={'Guardar Cambios'}/>
+            <Boton text={'Editar contraseña'} />
+            <Boton text={'Guardar Cambios'} onPress={presGuardarCambio}/>
     </View>
     <Footer/>
   </View>
