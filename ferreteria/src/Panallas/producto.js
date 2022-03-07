@@ -148,25 +148,16 @@ const styles = StyleSheet.create({
 
     cantidad: {
         fontSize: 18,
-        fontFamily: 'Arial',
-        fontFamily: 'sans-serif',
-        fontStyle: 'normal',
         fontWeight: 'bold',
     },
 
     unidad: {
         fontSize: 18,
-        fontFamily: 'Arial',
-        fontFamily: 'sans-serif',
-        fontStyle: 'normal',
 
     },
 
     nomProducto: {
         color: '#000',
-        fontFamily: 'Arial',
-        fontFamily: 'sans-serif',
-        fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 20,
         flex: 0,
@@ -177,9 +168,6 @@ const styles = StyleSheet.create({
     },
     infoProducto: {
         color: '#000',
-        fontFamily: 'Arial',
-        fontFamily: 'sans-serif',
-        fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 20,
         flex: 0,
