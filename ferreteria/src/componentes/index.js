@@ -8,6 +8,11 @@ import ListaProducto from './listaProductos'
 import TarjetaProducto from './tarjetaProducto'
 import ListaCarrito from './listaCarrito'
 import ListaBusqueda from './listaBusqueda';
+import Texts from './Text'
+import TarjetaDireccion from './tarjetaDireccion';
+import ListaDireccion from './listaDirecciones';
+
+
 export {
 HiperVinculo,
 Boton,
@@ -15,8 +20,11 @@ PasswordBox,
 TextBox,
 Footer,
 Header,
+Texts,
 ListaProducto,
 TarjetaProducto,
 ListaCarrito,
-ListaBusqueda
+ListaBusqueda,
+TarjetaDireccion,
+ListaDireccion
 }
