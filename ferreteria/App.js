@@ -8,6 +8,8 @@ import Registro from './src/Panallas/registroTerminado'
 import Contrasena from './src/Panallas/olvidarContrasenia'
 import Correo from './src/Panallas/confirmarCorreo'
 
+import Pantalla from './src/Panallas/producto'
+
 export default function App() {
   return (
     <SafeAreaView>
