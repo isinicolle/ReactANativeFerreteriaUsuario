@@ -1,20 +1,30 @@
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header } from '../componentes/'
+import ScrollerNumero from '../componentes/ScrollerNumero'
+import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
 
 
 const Pantalla = () => {
+    const cantidadProp=0;
+    const [cantidad,setCantidad]= useState(cantidadProp);
     return (
         <SafeAreaView style={styles.container}>
-            <Header busqueda={false} carrito={true} icon={'chevron-left'}></Header>
+            <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
             <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')} />
             <Text style={styles.nomProducto}>Nombre Producto</Text>
             <Text style={styles.cat}>Categoria</Text>
 
             <View style={styles.tarjeta}>
                 <View style={styles.PrecioyCa}>
+                    <View style={styles.textocant}>
                     <Text style={styles.cantidad}>500 Lps</Text>
+                    </View>
+                     <View style={styles.masmenos}>
+                     <ScrollerNumero setCantidad={setCantidad} cantidad={cantidad}></ScrollerNumero>
+
+                     </View>
                 </View>
                 <View style={styles.PrecioyCa}>
                     <Text style={styles.unidad}>Cantidad por unidad: </Text>
@@ -108,6 +118,22 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         padding: "2%",
         backgroundColor: "#fff"
+    },
+
+     textocant: {
+        flex: 2,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
+      
+    },
+    masmenos: {
+        flex: 6,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        padding: "2%",
+        
     },
     carri: {
         flex: 1,
