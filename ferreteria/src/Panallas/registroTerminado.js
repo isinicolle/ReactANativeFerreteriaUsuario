@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Picker} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Pickers} from '../componentes/'
 
 
 const Pantalla = ()=> {
@@ -11,13 +11,12 @@ const Pantalla = ()=> {
     <Text style={styles.header}>¡Hola! Nos alegramos de verte de nuevo.</Text>
   
     <View style={styles.tarjeta}>
-        <TextBox text={'Correo electrónico'} icon={'email'} />
-        <PasswordBox text={'Contraseña'}/>
-        <Boton text={'Iniciar Sesion'} />
-        <HiperVinculo text={'¿Has olvidado la contraseña?'}/>
-        <Text style={styles.h1Tarjeta}>¿Todavia no estas registrado?</Text>
-        <Text style={styles.h2Tarjeta}>Registrate ya</Text>
-        <Boton text={'Crear Cuenta'} />
+        <TextBox text={'Telefono'} icon={'phone'} />
+        <Pickers text={'Departamento'} icon={'city'} />
+        <Pickers text={'Ciudad'} icon={'city-variant'}>
+        </Pickers>
+        <TextBox text={'Direccion'} icon={'home'} />
+        <Boton text={'Continuar'} />
     </View>
     <Footer/>
   </SafeAreaView>
