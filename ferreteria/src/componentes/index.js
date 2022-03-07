@@ -7,6 +7,7 @@ import Header from './Header'
 import ListaProducto from './listaProductos'
 import TarjetaProducto from './tarjetaProducto'
 import ListaCarrito from './listaCarrito'
+import ListaBusqueda from './listaBusqueda';
 export {
 HiperVinculo,
 Boton,
@@ -16,5 +17,6 @@ Footer,
 Header,
 ListaProducto,
 TarjetaProducto,
-ListaCarrito
+ListaCarrito,
+ListaBusqueda
 }
