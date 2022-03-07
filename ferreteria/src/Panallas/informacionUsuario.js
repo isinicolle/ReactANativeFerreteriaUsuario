@@ -1,31 +1,65 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable, SafeAreaView, ScrollView } from 'react-native';
+import React,{ useState,useEffect } from 'react';
+
+import { StyleSheet, ActivityIndicator, View, TouchableOpacity, Pressable, SafeAreaView, FlatList, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts} from '../componentes/'
+const idcliente=7
+const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
+const Configuraciones=() => {
+    const [isLoading,setLoading]= useState(true);
+    const [data,setData]=useState([]);
+    const [nombre,setNombre]=useState([]);
+    const [apellido,setApellido]=useState([]);
+    const [telefono,setTelefono]=useState([]);
+    const [dni,setDni]=useState([]);
+    const [rtn,setRtn]=useState([]);
 
-export default function App() {
+
+    useEffect(()=>{
+        fetch(clienteURL).then((response)=> response.json())
+        .then((json)=>{
+            setData(json.id_cliente);
+            setNombre(json.nom_cliente);
+            setApellido(json.apellido_cliente)
+            setTelefono(json.tel_cliente)
+            setDni(json.DNI_Cliente)
+            setRtn(json.RTN)
+
+
+
+        })
+        .catch((error)=>console.log(error))
+        .finally(setLoading(false));
+    })
     return (
+     
         <ScrollView>
+               {isLoading? (<ActivityIndicator/>):
+               ( 
+               
+               
         <View style={styles.container}>
         <View style={styles.tarjeta}>
-        <Texts text={'Nombre'}/>
-        <TextBox text={'Andres'} icon={'face'} />
+        <Texts text='Nombre'/>
+        <TextBox text={'Andres'} setValue={setNombre} value={nombre} icon={'face'} />
         <Texts text={'Apellido'}/>
-        <TextBox text={'Martinez'} icon={'face'} />
+        <TextBox text={'Martinez'} setValue={setApellido} value={apellido} icon={'face'} />
         <Texts text={'Telefono'}/>
-        <TextBox text={'95560237'} icon={'phone'} />
+        <TextBox text={'95560237'} setValue={setTelefono} value={telefono} icon={'phone'} />
         <Texts text={'DNI'}/>
-        <TextBox text={'0501200711245'} icon={'book'} />
+        <TextBox text={'0501200711245'} setValue={setDni} value={dni} icon={'book'} />
         <Texts text={'RTN'}/>
-        <TextBox text={'1230501200711245'} icon={'text-format'} />
+        <TextBox text={'1230501200711245'} setValue={setRtn} value={rtn} icon={'text-format'} />
             <Boton text={'Editar contraseña'}/>
             <Boton text={'Guardar Cambios'}/>
     </View>
     <Footer/>
   </View>
+               )}
   </ScrollView>
+
     );
-}
+};
 
 const styles = StyleSheet.create({
 
@@ -158,3 +192,4 @@ const styles = StyleSheet.create({
         }
 
 });
+export default Configuraciones;
