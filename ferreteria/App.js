@@ -1,13 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { ScrollView,TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import PantallaInicio from './src/Panallas/InicioSesion'
+import { ScrollView} from 'react-native';
+
+import PantallaAgregarEditarDireccion from './src/Panallas/agregarEditarDireccion'
+import PantallaHistorialCompras from './src/Panallas/historialCompras'
+import PantallaHistorialComprasDetalle from './src/Panallas/misionyvision'
+import PantallaMisionyVision from './src/Panallas/misionyvision'
+import PantallaPrivacidad from './src/Panallas/privacidad'
+import PantallaCondiciones from './src/Panallas/condicionesUso'
 
 export default function App() {
   return (
     <ScrollView style={{flex:1}}>
-      <PantallaInicio />
+      <PantallaInicio5 />
     </ScrollView>
-    
   );
 }
