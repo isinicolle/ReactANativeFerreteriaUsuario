@@ -11,8 +11,7 @@ import ListaBusqueda from './listaBusqueda';
 import Texts from './Text'
 import TarjetaDireccion from './tarjetaDireccion';
 import ListaDireccion from './listaDirecciones';
-
-
+import TarjetaCarrito from './TarjetaCarrito';
 export {
 HiperVinculo,
 Boton,
@@ -26,5 +25,6 @@ TarjetaProducto,
 ListaCarrito,
 ListaBusqueda,
 TarjetaDireccion,
-ListaDireccion
+ListaDireccion,
+TarjetaCarrito
 }

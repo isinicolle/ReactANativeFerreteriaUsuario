@@ -14,7 +14,7 @@ class Producto{
         this.cantidad=cantidad
     }      
 }
-const TarjetaCarrito = ({Cartitem})=>{
+const TarjetaCarrito = ({Cartitem,pago=false})=>{
     const {item}={Cartitem};
     const cantidadProp =Cartitem.cantidad
     const [cantidad,setCantidad] =useState(cantidadProp)
@@ -36,11 +36,23 @@ const TarjetaCarrito = ({Cartitem})=>{
                     </Text>
                 </View>
             </View>
+            {pago?
+            <View>
             <View style={styles.container2}>
-                <ScrollerNumero  setCantidad={setCantidad} cantidad={cantidad}/>
-                <Text>{Cartitem.precio}</Text>
+            <Text>Cantidad: {Cartitem.cantidad}</Text>
+            <Text>{Cartitem.precio}</Text>
+            </View>
+            </View>
+        
+            :  <View>
+            <View style={styles.container2}>
+            <ScrollerNumero  setCantidad={setCantidad} cantidad={cantidad}/>
+            <Text>{Cartitem.precio}</Text>
             </View>
             <Boton text={'Eliminar del carrito'} />
+            </View>}
+            
+            
             
         </View>
         </View>
