@@ -1,17 +1,19 @@
 import React from 'react'
 import { View,TextInput,StyleSheet,Text,TouchableOpacity } from 'react-native'
 import Icons from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const TextBox = ({value,setValue,text,icon})=>{
     return (
         <View style={styles.container}>
-    <Icons name={icon} size={20}/>
+        <Icons name={icon} size={20}/>
         <TextInput 
         style={styles.input}
-        value={value}
-        onChangeText={setValue} 
         autoComplete
-        placeholder={text}/>
+        placeholder={text}
+        value={value}
+        onChangeText={setValue}
+        />
         </View>
     )
 }

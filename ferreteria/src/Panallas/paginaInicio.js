@@ -1,11 +1,14 @@
+import React from 'react'
+import { StatusBar,TouchableOpacity,TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 
-import { StatusBar,TouchableOpacity,TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,ListaProducto,TarjetaProducto} from '../componentes/'
 
 const PantallaInicio = ()=> {
     return (
-    <SafeAreaView style={styles.container}>
+        <ScrollView>
+
+        <SafeAreaView style={styles.container}>
         <Header busqueda={true} carrito={true}icon={'menu'}/>
         <View style={{paddingTop:10,flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'center'}}>
         <TouchableOpacity>
@@ -24,12 +27,13 @@ const PantallaInicio = ()=> {
             </View>
         </TouchableOpacity>
         </View>
-        <ListaProducto text={'Cerrajeria'}/>
-        <ListaProducto text={'Cerrajeria'}/>
-        <ListaProducto text={'Cerrajeria'}/>
+        <ListaProducto tipo={1} text={'Agricultura'} id={2}/>
+        <ListaProducto tipo={2} text={'TRUPPER'} id={1}/>
+        <ListaProducto tipo={1} text={'Soldadura'} id={1}/>
         
         <Footer/>
     </SafeAreaView> 
+        </ScrollView>
     );
   }
 

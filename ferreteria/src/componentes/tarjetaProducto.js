@@ -6,7 +6,7 @@ const TarjetaProducto = ({text,precio,imagen })=>{
         <TouchableOpacity>
         <View style={styles.container}>
             
-            <Image source = {{uri:imagen}} style={styles.imagen} />
+            <Image source = {{uri:('http://192.168.100.48:6001/img/'+imagen)}} style={styles.imagen} />
             <Text style={styles.detalle}>
                 {text}
             </Text>

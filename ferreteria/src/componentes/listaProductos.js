@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { FlatList, Pressable,StyleSheet,Text,TouchableOpacity,View } from 'react-native'
 import TarjetaProducto from './tarjetaProducto'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -17,6 +17,13 @@ const dataProducto = [
     new Producto(4,"Gasolina",'https://m.media-amazon.com/images/I/71aQtUldu+L._AC_SL1500_.jpg','1200 peso'),
 ] 
 const ListaProducto  = ({ onPress,text,tipo,id})=>{
+    const[productos,setProductos] = useState()
+    useEffect( async () => {
+        var a 
+       (tipo==1? (a= await conseguirCategoria(id)):a=await(conseguirMarca(id)))
+        await setProductos(a)
+      
+      }, []);
     return (
         <View style={{width:'100%',flex:1,flexDirection:'column'}}>
         <TouchableOpacity style={styles.HeaderContainer}  >
@@ -26,7 +33,7 @@ const ListaProducto  = ({ onPress,text,tipo,id})=>{
                 <Icon name={'chevron-right'} style={{flex:1}} size={30}/>
             </TouchableOpacity>
         <View style={styles.Lista}>
-            <FlatList horizontal={true} data={dataProducto} keyExtractor={item=>item.id_producto} renderItem={renderizarLista}  /> 
+            <FlatList horizontal={true} data={productos} keyExtractor={item=>item.id_producto} renderItem={renderizarLista}  /> 
         </View>
         </View>
         )
@@ -52,12 +59,44 @@ const styles = StyleSheet.create({
     },
 
 })
-function conseguirCategoria(){
+async function conseguirCategoria(id){
+    try{
+        const res = await fetch('http://192.168.100.48:6001/api/categoria/listarCategoriaPorProducto?idcategoria='+id,
+        {method:'GET',
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
+      }
+      )
+      const json = await res.json()
+    return (json[0].Productos)
 
+    } catch(err){
+        console.log(err)
+    }
+}
+async function conseguirMarca(id){
+    try{
+        const res = await fetch('http://192.168.100.48:6001/api/marca/ProductoPorMarca?idmarca='+id,
+        {method:'GET',
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
+      }
+      )
+      const json = await res.json()
+        return (json[0].Productos)
+
+    } catch(err){
+        console.log(err)
+    }
 }
 const renderizarLista = ({item})=>{
     return(
-        <TarjetaProducto precio={item.precio} imagen={item.imagen} text={item.descripcion_producto}/>
+        <TarjetaProducto precio={item.precio_actual} imagen={item.imagen} text={item.descripcion_producto}/>
     )
 }
+
 export default ListaProducto
