@@ -9,11 +9,12 @@ import Correo from './src/Panallas/confirmarCorreo'
 import Pantalla from './src/Panallas/producto'
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import { ListaCarrito } from './src/componentes';
 const Stack = createStackNavigator();
 export default function App() {
   return (
     <SafeAreaView>
-      <Inicio/>
+      <ListaCarrito id={1}/>
     </SafeAreaView>
   );
 }

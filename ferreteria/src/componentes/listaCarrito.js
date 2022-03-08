@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect} from 'react'
 import { FlatList,StyleSheet,Text,TouchableOpacity,View } from 'react-native'
 import TarjetaCarrito from './TarjetaCarrito'
 import {Header,Footer,Boton} from './'
@@ -20,10 +20,16 @@ const dataProducto = [
     new Producto(4,"Gasolina",'Gas','Super','100peso','https://m.media-amazon.com/images/I/71aQtUldu+L._AC_SL1500_.jpg',1 ),
     new Producto(5,"Gasolina",'Gas','Super','100peso','https://m.media-amazon.com/images/I/71aQtUldu+L._AC_SL1500_.jpg',1 ),
 ] 
-const ListaCarrito  = ({ onPress,text,tipo,id})=>{
+const ListaCarrito  = ({ onPress,id})=>{
+    const[productos,setProductos] = useState()
+    useEffect( async () => {
+        var a = await obtenerCarrito(id);
+        await setProductos(a)
+      
+      }, []);
     return (
         <View >
-            <FlatList  contentContainerStyle={styles.Lista} ListFooterComponent={RenderFooter} ListHeaderComponent={HeaderLista} data={dataProducto} keyExtractor={item=>item.id_producto} renderItem={renderizarLista}  /> 
+            <FlatList  contentContainerStyle={styles.Lista} ListFooterComponent={RenderFooter} ListHeaderComponent={HeaderLista} data={productos} keyExtractor={item=>item.Productos.id_producto} renderItem={renderizarLista}  /> 
         </View>
         )
       
@@ -55,5 +61,25 @@ const RenderFooter= ()=>{
         </View>
        
     )
+}
+
+async function obtenerCarrito(id)
+{
+    try{
+        const res = await fetch('http://192.168.100.48:6001/api/carrito/carritoCliente?idUsuario='+id,
+        {method:'GET',
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
+      }
+      )
+      const json = await res.json()
+      console.log(json);
+     return (json.CarritoItem)
+
+    } catch(err){
+        console.log(err)
+    }
 }
 export default ListaCarrito

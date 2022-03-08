@@ -18,21 +18,20 @@ const TarjetaCarrito = ({Cartitem,pago=false})=>{
     const {item}={Cartitem};
     const cantidadProp =Cartitem.cantidad
     const [cantidad,setCantidad] =useState(cantidadProp)
-    console.log(cantidadProp);
     return (
         <View style={styles.container}>
         <View style={styles.tarjeta}>
             <View style={styles.container1}>
-                <Image source={{uri:Cartitem.imagen}} style={styles.imagen}/>
+                <Image source={{uri:('http://192.168.100.48:6001/img/'+Cartitem.Productos.imagen)}} style={styles.imagen}/>
                 <View style={styles.descripciones}>
-                    <Text>
-                    {Cartitem.descripcion_producto}
+                    <Text style={{fontWeight:'bold',fontSize:20,textAlign:'left'}}>
+                    {Cartitem.Productos.descripcion_producto}
                     </Text>
                     <Text>
-                     {Cartitem.marca} 
+                     {Cartitem.Productos.Categorias.descripcion_categoria} 
                     </Text>
                     <Text>
-                      {Cartitem.categoria}  
+                      {Cartitem.Productos.Marcas.descripcion_marca}  
                     </Text>
                 </View>
             </View>
@@ -40,14 +39,14 @@ const TarjetaCarrito = ({Cartitem,pago=false})=>{
             <View>
             <View style={styles.container2}>
             <Text>Cantidad: {Cartitem.cantidad}</Text>
-            <Text>{Cartitem.precio}</Text>
+            <Text>{Cartitem.Productos.precio}</Text>
             </View>
             </View>
         
             :  <View>
             <View style={styles.container2}>
             <ScrollerNumero  setCantidad={setCantidad} cantidad={cantidad}/>
-            <Text>{Cartitem.precio}</Text>
+            <Text>Lps. {Cartitem.Productos.precio_actual}</Text>
             </View>
             <Boton text={'Eliminar del carrito'} />
             </View>}
