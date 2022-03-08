@@ -3,7 +3,7 @@ import { View,TextInput,StyleSheet,Text,TouchableOpacity } from 'react-native'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const TextBox = ({value,setValue,text,icon,tipo,max=100})=>{
+const TextBox = ({value,setValue,text,icon,tipo='default',max=100})=>{
     return (
         <View style={styles.container}>
         <Icons name={icon} size={20}/>
