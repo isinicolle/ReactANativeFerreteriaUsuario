@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,TarjetaProducto,TarjetaCarrito} from '../componentes/'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,TarjetaProducto,TarjetaCarrito,TarjetaDireccion} from '../componentes/'
 import React, { useState,useEffect} from 'react'
+import { Direcciones } from '.';
 var total,subtotal,descuento,imp,envio
 class Producto{
     constructor(id_producto,descripcion_producto,categoria,marca,precio,imagen,cantidad){
@@ -30,9 +31,14 @@ const Pago = ({id})=> {
         await setProductos(a)
       
       }, []);
+
+      
+
+
+
   return (
     <SafeAreaView style={styles.container}>
-        <FlatList ListFooterComponent={RenderFooter} ListHeaderComponent={RenderHeader} data={productos} keyExtractor={item=>item.Productos.id_producto} renderItem={RenderLista} />
+        <FlatList ListEmptyComponent={RenderVacio} ListFooterComponent={RenderFooter(id)} ListHeaderComponent={RenderHeader} data={productos} keyExtractor={item=>item.Productos.id_producto} renderItem={RenderLista} />
     </SafeAreaView>
   );
 
@@ -67,10 +73,51 @@ const styles = StyleSheet.create({
      marginVertical:10
  }
 })
-
-const RenderFooter = ()=>{
+const RenderVacio = ()=>{
     return(
-        <View style={styles.containerTabla}>
+    <View style={{marginTop:1}}>
+        <Text> No hay productos</Text>
+    </View>
+    )
+}
+const RenderFooter = (id)=>{
+    const[direccion,setDireccion] = useState()
+    useEffect( async () => {
+        var a = await obtenerdirecciones(id);
+        if (a)
+        await setDireccion(a)
+        
+      }, []);
+
+      const handleProcesar = async ()=>
+        {
+        try{
+            const res = await fetch('http://192.168.100.48:6001/api/ventas/procesarCarrito?idUsuario='+id,
+            {method:'POST',
+            headers:{
+              Accept:'application/json',
+              'Content-Type':'application/json'
+            },body: JSON.stringify({
+                idDireccionEnvio:direccion.id_direccionEnvio
+                ,rtn:false
+              })
+          }
+         
+
+          )
+          const json = await res.json()
+          console.log(json)
+        }catch(err){
+         console.log(err);
+        }
+    }
+
+
+      if (direccion)
+    return(
+        <>
+       
+            <View style={styles.containerTabla}>
             <View style={styles.tablaTotales}>
                 <View style={styles.filaTotal}>
                     <Text style={{fontSize:20}}>Subtotal</Text>
@@ -93,13 +140,41 @@ const RenderFooter = ()=>{
                     <Text style={{fontSize:20}}>Lps. {global.total}</Text>
                 </View>
             </View>
+            </View>
+            <TarjetaDireccion  enviar={true} direccion={direccion.direccion}  nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
+            <View style={styles.containerTabla}>
             <View style={styles.containerFinal}>
             <Text style={{fontSize:16,color:'gray',marginVertical:20}}>Al realizar este pedido acepta nuestras condiciones de uso y aviso de privacidad</Text>
-            <Boton text={'Confirmar y pagar'}/>
+            <Boton onPress={handleProcesar} text={'Confirmar y pagar'}/>
             </View>
-        </View>
+            </View>
+       
+        </>
     )
     }
+    
+    async function obtenerdirecciones(id,index=0){
+        try{
+            const res = await fetch('http://192.168.100.48:6001/api/direccionesEnvio/direccionEnvioXUsuario?id_usuarioCliente='+id,
+            {method:'GET',
+            headers:{
+              Accept:'application/json',
+              'Content-Type':'application/json'
+            },
+          }
+          )
+
+          const json = await res.json();
+          console.log(json[0]);
+        return await (json[index])
+    
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+
+
     async function obtenerCarrito(id,total=false)
 {
     try{
@@ -112,7 +187,7 @@ const RenderFooter = ()=>{
       }
       )
       const json = await res.json()
-      console.log(json);
+      //console.log(json);
       global.subtotal = await json.totalCarrito
       global.descuento = global.subtotal *0
       global.imp =Math.round((global.subtotal *.15) * 100) / 100 
@@ -123,6 +198,7 @@ const RenderFooter = ()=>{
         console.log(err)
     }
 }
+
 
     const  RenderHeader = ()=>{
         return (<Header text={'Pago'} icon={'chevron-left'} />)
