@@ -58,7 +58,6 @@ async function obtenerdirecciones(id){
       }
       )
       const json = await res.json();
-      console.log(json);
     return (json)
 
     } catch(err){
