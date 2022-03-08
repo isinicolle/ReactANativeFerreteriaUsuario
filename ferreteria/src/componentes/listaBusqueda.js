@@ -56,4 +56,7 @@ const RenderFooter= ()=>{
     )
 }
 
+async function conseguirProductos(nombre){
+
+}
 export default ListaBusqueda

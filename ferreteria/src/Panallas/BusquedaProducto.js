@@ -4,10 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,ListaCarrito,ListaBusqueda} from '../componentes'
 
 
-const Busqueda = ()=> {
+const Busqueda = ({nombre})=> {
   return (
     <SafeAreaView style={styles.container}>
-        <ListaBusqueda />
+        <ListaBusqueda text={nombre}/>
     </SafeAreaView>
   );
 }
