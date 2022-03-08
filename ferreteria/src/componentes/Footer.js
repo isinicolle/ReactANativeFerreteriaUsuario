@@ -21,9 +21,7 @@ const styles= StyleSheet.create({
       },
       footerText:{
         color:'#B9B9B9',
-        fontFamily:'Arial',
-        fontStyle:'normal',
-        fontWeight:'normal',
+    
         fontSize:12,
       },
 }) 

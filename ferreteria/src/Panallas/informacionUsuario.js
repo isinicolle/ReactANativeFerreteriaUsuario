@@ -1,31 +1,97 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Button, Pressable, SafeAreaView, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts} from '../componentes/'
+import React,{ useState,useEffect } from 'react';
 
-export default function App() {
+import { StyleSheet, ActivityIndicator, View, ScrollView, Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts, Header} from '../componentes/'
+const idcliente=7
+let primera=true;
+const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
+const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente="+idcliente
+
+const Configuraciones=() => {
+    const [isLoading,setLoading]= useState(true);
+    const [data,setData]=useState(null);
+    const [nombre,setNombre]=useState(null);
+    const [apellido,setApellido]=useState(null);
+    const [telefono,setTelefono]=useState(null);
+    const [dni,setDni]=useState(null);
+    const [rtn,setRtn]=useState(null);
+   
+
+    
+    useEffect(()=>{
+        cargar();
+    })
+
+    const cargar= async() => {
+        if(primera==true){
+            fetch(clienteURL).then((response)=> response.json())
+            .then((json)=>{
+                setData(json.id_cliente);
+                setNombre(json.nom_cliente);
+                setApellido(json.apellido_cliente);
+                setTelefono(json.tel_cliente);
+                setDni(json.DNI_Cliente);
+                setRtn(json.RTN);
+                primera=false;
+            })
+            .catch((error)=>console.log(error))
+        }
+    }
+
+
+    const presGuardarCambio= async() => {
+      try {
+          const respuesta = await fetch(
+           clienteActu,{
+               method: 'PUT',
+               headers:{
+                   Accept: 'application/json',
+                   'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    nom_cliente: nombre,
+                    apellido_cliente: apellido,
+                    RTN: rtn,
+                    DNI_Cliente: dni,
+                    tel_cliente: telefono,
+                })
+            
+               } );
+               const json= await respuesta.json();
+               console.log(json);
+               Alert.alert("MEDI","Peticion procesada");
+               cargar();
+      } catch (error) {
+          console.error(error);
+      } 
+    }
     return (
+     
         <ScrollView>
+                 
         <View style={styles.container}>
+            <Header busqueda={false} text={"Informacion de cliente"} carrito={true} icon={'chevron-left'}></Header>
         <View style={styles.tarjeta}>
-        <Texts text={'Nombre'}/>
-        <TextBox text={'Andres'} icon={'face'} />
+        <Texts text='Nombre'/>
+        <TextBox text={'Andres'} setValue={setNombre} value={nombre} icon={'face'} />
         <Texts text={'Apellido'}/>
-        <TextBox text={'Martinez'} icon={'face'} />
+        <TextBox text={'Martinez'} setValue={setApellido} value={apellido} icon={'face'} />
         <Texts text={'Telefono'}/>
-        <TextBox text={'95560237'} icon={'phone'} />
+        <TextBox text={'95560237'} setValue={setTelefono} value={telefono} icon={'phone'} tipo={"number-pad"} max={12}/>
         <Texts text={'DNI'}/>
-        <TextBox text={'0501200711245'} icon={'book'} />
+        <TextBox text={'0501200711245'} setValue={setDni} value={dni} icon={'book'} tipo={"numeric"} max={13}/>
         <Texts text={'RTN'}/>
-        <TextBox text={'1230501200711245'} icon={'text-format'} />
-            <Boton text={'Editar contraseña'}/>
-            <Boton text={'Guardar Cambios'}/>
+        <TextBox text={'1230501200711245'} setValue={setRtn} value={rtn} icon={'text-format'} tipo={"numeric"} max={14}/>
+            <Boton text={'Editar contraseña'} />
+            <Boton text={'Guardar Cambios'} onPress={presGuardarCambio}/>
     </View>
     <Footer/>
   </View>
+               
   </ScrollView>
+
     );
-}
+};
 
 const styles = StyleSheet.create({
 
@@ -158,3 +224,4 @@ const styles = StyleSheet.create({
         }
 
 });
+export default Configuraciones;

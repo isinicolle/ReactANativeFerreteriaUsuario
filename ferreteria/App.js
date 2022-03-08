@@ -7,6 +7,8 @@ import Registro from './src/Panallas/registroTerminado'
 import Contrasena from './src/Panallas/olvidarContrasenia'
 import Correo from './src/Panallas/confirmarCorreo'
 import Pantalla from './src/Panallas/producto'
+import Configuraciones from './src/Panallas/informacionUsuario';
+import PantallaDirecciones from './src/Panallas/direcciones'
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { ListaCarrito } from './src/componentes';

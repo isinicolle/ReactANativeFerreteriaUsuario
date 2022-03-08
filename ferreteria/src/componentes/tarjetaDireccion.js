@@ -19,16 +19,17 @@ const TarjetaDireccion = ({enviar=false,nombre,direccion,ciudad, depto})=>{
             <View></View>
             }  
             <View style={styles.descripciones}>
-            <Text style={styles.texto}>
-                {nombre}
-            </Text>
+           
             <Text style={styles.texto}>
                 {direccion}
             </Text>
-            <Text style={styles.texto}>
+            <Text style={styles.texto2}>
+                {nombre}
+            </Text>
+            <Text style={styles.texto2}>
                 {ciudad}
             </Text>
-            <Text style={styles.texto}>
+            <Text style={styles.texto2}>
                 {depto}
             </Text>
             </View>
@@ -75,10 +76,17 @@ const styles = StyleSheet.create({
     texto:{
         
        fontSize:16,
-       fontWeight:'500',
+       fontWeight:'700',
        textAlign:'left',
        marginVertical:4
     },
+    texto2:{
+        fontWeight: '500',
+        fontSize:16,
+        fontWeight:'500',
+        textAlign:'left',
+        marginVertical:4
+     },
     enviar:{
         
         fontSize:18,
