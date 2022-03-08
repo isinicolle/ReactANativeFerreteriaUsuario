@@ -48,7 +48,7 @@ const Pantalla = () => {
         <ScrollView>
         <View style={styles.container}>
             <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
-            <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')} />
+            <Image style={styles.logo} source={{uri:('http://192.168.1.8:6001/img/'+imagen)}} />
             <Text style={styles.nomProducto}>{descripcion}</Text>
             <Text style={styles.cat}>{categoria}</Text>
 

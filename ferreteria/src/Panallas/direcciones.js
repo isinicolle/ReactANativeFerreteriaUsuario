@@ -4,13 +4,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header, TarjetaDireccion,ListaDireccion } from '../componentes/'
 const id=3;
 
-const Pantalla = () => {
+const PantallaDirecciones = () => {
     return (
         <ScrollView>
         <View style={styles.container}>
             <Header busqueda={false} text={"Direcciones Envio"} carrito={true} icon={'chevron-left'}></Header>
             <View style={styles.tarjeta}>
-            <ListaDireccion></ListaDireccion>
+            <ListaDireccion id={2}></ListaDireccion>
             </View>
 
             <Footer></Footer>
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
 
     
 })
-export default Pantalla;
+export default PantallaDirecciones;
