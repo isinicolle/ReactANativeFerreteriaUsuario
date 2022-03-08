@@ -1,4 +1,4 @@
-
+import React from 'react'
 import { StatusBar,TouchableOpacity,TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,ListaProducto,TarjetaProducto} from '../componentes/'

@@ -2,9 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
-
-
+import react,{useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 const Pantalla = ()=> {
+  const [user,setUser] = useState('');
+  const [pass,setPass] = useState('');
   return (
     <ScrollView >
       <View style={styles.container}> 
@@ -12,8 +14,8 @@ const Pantalla = ()=> {
     <Text style={styles.header}>¡Hola! Nos alegramos de verte de nuevo.</Text>
   
     <View style={styles.tarjeta}>
-        <TextBox text={'Correo electrónico'} icon={'email'} />
-        <PasswordBox text={'Contraseña'}/>
+        <TextBox value={user} setValue={setUser} text={'Correo electrónico'} icon={'email'} />
+        <PasswordBox value={pass} setValue={setPass} text={'Contraseña'}/>
         <Boton text={'Iniciar Sesion'} />
         <HiperVinculo text={'¿Has olvidado la contraseña?'}/>
         <Text style={styles.h1Tarjeta}>¿Todavia no estas registrado?</Text>

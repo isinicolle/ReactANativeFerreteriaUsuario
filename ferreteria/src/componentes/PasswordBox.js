@@ -9,7 +9,10 @@ const TextBox = ({value,setValue,text})=>{
         <TextInput 
         style={styles.input}
         placeholder={text}
-        secureTextEntry={true} />
+        secureTextEntry={true} 
+        value={value}
+        onChangeText={setValue}
+        />
         </View>
     )
 }
