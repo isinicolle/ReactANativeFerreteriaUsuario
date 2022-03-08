@@ -10,7 +10,10 @@ const TextBox = ({value,setValue,text,icon})=>{
         <TextInput 
         style={styles.input}
         autoComplete
-        placeholder={text}/>
+        placeholder={text}
+        value={value}
+        onChangeText={setValue}
+        />
         </View>
     )
 }

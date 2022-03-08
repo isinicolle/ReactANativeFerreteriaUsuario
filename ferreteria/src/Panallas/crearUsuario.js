@@ -1,21 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component} from 'react';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Alert} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Alert, AsyncStorage} from 'react-native';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 import { useState } from 'react';
 
 const Pantalla = ()=> {
-  const [nombre, setNombre]= useState(null);
-    const [correo, setCorreo]= useState(null);
-    const [contrasenia, setContrasenia]= useState(null);
+  const [nombre, setNombre]= useState('');
+    const [correo, setCorreo]= useState('');
+    const [contrasenia, setContrasenia]= useState('');
     const usuarioNuevo = async() =>{
-      if(2<1){
-        console.log("Escriba todos los datos");
-        Alert.alert("Ferretear","Revise sus datos")
-      }else{
+      
+      console.log(nombre);
         try{
         const respuesta = await fetch(
-          'http://192.168.0.10:6001/api/usuarioCliente/insertarUsuarioCliente',{
+          'http://192.168.0.8:6001/api/usuarioCliente/insertarUsuarioCliente',{
             method: 'POST',
            headers:{
              Accept: 'application/json',
@@ -24,16 +22,14 @@ const Pantalla = ()=> {
            body: JSON.stringify({
              nombre_usuario: nombre,
              contraenia_usuario: contrasenia,
-             correo_usuario: correo
+             correo_usuario: correo,
            })
-          })
-          const json = await respuesta.json;
+          });
+          const json = await respuesta.json();
           console.log(json);
-          Alert.alert("Ferretear", "Peticion procesada");
          } catch(error){
            console.log(error);
         }
-      }
     }
   return (
     <SafeAreaView style={styles.container}>
@@ -41,10 +37,10 @@ const Pantalla = ()=> {
     <Text style={styles.header}>¡Nos encantará que seas parte de nosotros!</Text>
   
     <View style={styles.tarjeta}>
-        <TextBox text={'Nombre'} icon={'face'} value={nombre} onChangeText={setNombre}/>
-        <TextBox text={'Correo electrónico'} icon={'email'} value={correo} onChangeText={setCorreo}/>
+        <TextBox text={'Nombre'} icon={'face'} setValue={setNombre} value={nombre}/>
+        <TextBox text={'Correo electrónico'} icon={'email'} setValue={setCorreo} value={correo}/>
         <PasswordBox text={'Contraseña'} />
-        <PasswordBox text={'Confirmar contraseña'} value={contrasenia} onChangeText={setContrasenia}/>
+        <PasswordBox text={'Confirmar contraseña'} setValue={setContrasenia} value={contrasenia}/>
         <Boton text={'Crear Cuenta'} onPress={usuarioNuevo}/>
     </View>
     <Footer/>
