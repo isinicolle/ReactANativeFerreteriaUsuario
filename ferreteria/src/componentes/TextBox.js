@@ -3,7 +3,7 @@ import { View,TextInput,StyleSheet,Text,TouchableOpacity } from 'react-native'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const TextBox = ({value,setValue,text,icon})=>{
+const TextBox = ({value,setValue,text,icon,tipo})=>{
     return (
         <View style={styles.container}>
         <Icons name={icon} size={20}/>
@@ -13,6 +13,7 @@ const TextBox = ({value,setValue,text,icon})=>{
         placeholder={text}
         value={value}
         onChangeText={setValue}
+        keyboardType={tipo}
         />
         </View>
     )

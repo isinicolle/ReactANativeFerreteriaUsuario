@@ -77,11 +77,11 @@ const Configuraciones=() => {
         <Texts text={'Apellido'}/>
         <TextBox text={'Martinez'} setValue={setApellido} value={apellido} icon={'face'} />
         <Texts text={'Telefono'}/>
-        <TextBox text={'95560237'} setValue={setTelefono} value={telefono} icon={'phone'} />
+        <TextBox text={'95560237'} setValue={setTelefono} value={telefono} icon={'phone'} tipo={"numeric"}/>
         <Texts text={'DNI'}/>
-        <TextBox text={'0501200711245'} setValue={setDni} value={dni} icon={'book'} />
+        <TextBox text={'0501200711245'} setValue={setDni} value={dni} icon={'book'} tipo={"numeric"}/>
         <Texts text={'RTN'}/>
-        <TextBox text={'1230501200711245'} setValue={setRtn} value={rtn} icon={'text-format'} />
+        <TextBox text={'1230501200711245'} setValue={setRtn} value={rtn} icon={'text-format'} tipo={"numeric"}/>
             <Boton text={'Editar contraseña'} />
             <Boton text={'Guardar Cambios'} onPress={presGuardarCambio}/>
     </View>
