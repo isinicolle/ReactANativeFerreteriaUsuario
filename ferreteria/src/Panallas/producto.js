@@ -6,7 +6,7 @@ import ScrollerNumero from '../componentes/ScrollerNumero'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
 const idproducto=2;
 let primera=true;
-const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
+const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto="+idproducto;
 
 const Pantalla = () => {
     const cantidadProp=0;
