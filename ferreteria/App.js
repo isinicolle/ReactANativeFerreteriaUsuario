@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <SafeAreaView>
-      <ListaCarrito id={1}/>
+      <Pago id={1}/>
     </SafeAreaView>
   );
 }

@@ -39,7 +39,7 @@ const TarjetaCarrito = ({Cartitem,pago=false})=>{
             <View>
             <View style={styles.container2}>
             <Text>Cantidad: {Cartitem.cantidad}</Text>
-            <Text>{Cartitem.Productos.precio}</Text>
+            <Text>Lps. {Cartitem.Productos.precio_actual}</Text>
             </View>
             </View>
         
