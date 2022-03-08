@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <SafeAreaView>
-      <Login/>
+      <Inicio/>
     </SafeAreaView>
   );
 }
