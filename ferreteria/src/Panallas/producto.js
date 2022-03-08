@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState,useEffect  } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ScrollerNumero from '../componentes/ScrollerNumero'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
-
+const idproducto=2;
+let primera=true;
+const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
 
 const Pantalla = () => {
     const cantidadProp=0;

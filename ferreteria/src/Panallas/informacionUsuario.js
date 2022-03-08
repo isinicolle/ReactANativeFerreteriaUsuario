@@ -1,9 +1,10 @@
 import React,{ useState,useEffect } from 'react';
 
-import { StyleSheet, ActivityIndicator, View, TouchableOpacity, Pressable, SafeAreaView, FlatList, ScrollView, Alert } from 'react-native';
+import { StyleSheet, ActivityIndicator, View, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts} from '../componentes/'
+import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts, Header} from '../componentes/'
 const idcliente=7
+let primera=true;
 const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
 const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente="+idcliente
 
@@ -15,21 +16,29 @@ const Configuraciones=() => {
     const [telefono,setTelefono]=useState(null);
     const [dni,setDni]=useState(null);
     const [rtn,setRtn]=useState(null);
+   
 
-
+    
     useEffect(()=>{
-        fetch(clienteURL).then((response)=> response.json())
-        .then((json)=>{
-            setData(json.id_cliente);
-            setNombre(json.nom_cliente);
-            setApellido(json.apellido_cliente);
-            setTelefono(json.tel_cliente);
-            setDni(json.DNI_Cliente);
-            setRtn(json.RTN);
-        })
-        .catch((error)=>console.log(error))
-        .finally(setLoading(false));
+        cargar();
     })
+
+    const cargar= async() => {
+        if(primera==true){
+            fetch(clienteURL).then((response)=> response.json())
+            .then((json)=>{
+                setData(json.id_cliente);
+                setNombre(json.nom_cliente);
+                setApellido(json.apellido_cliente);
+                setTelefono(json.tel_cliente);
+                setDni(json.DNI_Cliente);
+                setRtn(json.RTN);
+                primera=false;
+            })
+            .catch((error)=>console.log(error))
+        }
+    }
+
 
     const presGuardarCambio= async() => {
       try {
@@ -51,6 +60,7 @@ const Configuraciones=() => {
                const json= await respuesta.json();
                console.log(json);
                Alert.alert("MEDI","Peticion procesada");
+               cargar();
       } catch (error) {
           console.error(error);
       } 
@@ -58,11 +68,9 @@ const Configuraciones=() => {
     return (
      
         <ScrollView>
-               {isLoading? (<ActivityIndicator/>):
-               ( 
-               
-               
+                 
         <View style={styles.container}>
+            <Header busqueda={false} text={"Informacion de cliente"} carrito={true} icon={'chevron-left'}></Header>
         <View style={styles.tarjeta}>
         <Texts text='Nombre'/>
         <TextBox text={'Andres'} setValue={setNombre} value={nombre} icon={'face'} />
@@ -79,7 +87,7 @@ const Configuraciones=() => {
     </View>
     <Footer/>
   </View>
-               )}
+               
   </ScrollView>
 
     );
