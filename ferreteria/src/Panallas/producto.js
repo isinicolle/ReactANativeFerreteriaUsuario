@@ -4,25 +4,58 @@ import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, Scrol
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ScrollerNumero from '../componentes/ScrollerNumero'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
-const idproducto=2;
+const idproducto=3;
 let primera=true;
 const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto="+idproducto;
 
 const Pantalla = () => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
+    const [descripcion,setDescripcion]=useState(null);
+    const [cantidadxunidad,setCantidadxUnidad]=useState(null);
+    const [precio,setPrecio]=useState(null);
+    const [stock,setStock]=useState(null);
+    const [descuento,setDescuento]=useState(null);
+    const [imagen,setImagen]=useState(null);
+    const [marca,setMarca]=useState(null);
+    const [categoria,setCategoria]=useState(null);
+
+
+    useEffect(()=>{
+        cargar();
+    })
+
+    const cargar= async() => {
+        if(primera==true){
+            fetch(productoURL).then((response)=> response.json())
+            .then((json)=>{
+                setDescripcion(json.descripcion_producto);
+                setCantidadxUnidad(json.cantidad_por_unidad);
+                setPrecio(json.precio_actual);
+                setStock(json.stock);
+                setDescuento(json.descuento);
+                setImagen(json.imagen);
+                setCategoria(json.Categorias.descripcion_categoria);
+                setMarca(json.Marcas.descripcion_marca)
+                primera=false;
+            })
+            .catch((error)=>console.log(error))
+        }
+    }
+
+
     return (
         <ScrollView>
         <View style={styles.container}>
             <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
             <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')} />
-            <Text style={styles.nomProducto}>Nombre Producto</Text>
-            <Text style={styles.cat}>Categoria</Text>
+            <Text style={styles.nomProducto}>{descripcion}</Text>
+            <Text style={styles.cat}>{categoria}</Text>
 
             <View style={styles.tarjeta}>
                 <View style={styles.PrecioyCa}>
                     <View style={styles.textocant}>
-                    <Text style={styles.cantidad}>500 Lps</Text>
+                    <Text style={styles.cantidad}>{precio+" Lps"}</Text>
                     </View>
                      <View style={styles.masmenos}>
                      <ScrollerNumero setCantidad={setCantidad} cantidad={cantidad}></ScrollerNumero>
@@ -31,7 +64,7 @@ const Pantalla = () => {
                 </View>
                 <View style={styles.PrecioyCa}>
                     <Text style={styles.unidad}>Cantidad por unidad: </Text>
-                    <Text style={styles.unidad}>20 clavos</Text>
+                    <Text style={styles.unidad}>{cantidadxunidad}</Text>
                 </View>
                 <View style={styles.carri}>
                     <Pressable style={styles.button}  >
@@ -47,22 +80,22 @@ const Pantalla = () => {
             <View style={styles.tarjeta}>
             <View style={styles.dato}>
                <Text style={styles.cantidad}>Categoria: </Text>
-               <Text style={styles.unidad}>Dato </Text>
+               <Text style={styles.unidad}>{categoria} </Text>
 
                </View>
                <View style={styles.dato}>
                <Text style={styles.cantidad}>Marca: </Text>
-               <Text style={styles.unidad}>Dato </Text>
+               <Text style={styles.unidad}>{marca}</Text>
 
                </View>
                <View style={styles.dato}>
                <Text style={styles.cantidad}>Stock: </Text>
-               <Text style={styles.unidad}>Dato </Text>
+               <Text style={styles.unidad}>{stock}</Text>
 
                </View>
                <View style={styles.dato}>
                <Text style={styles.cantidad}>Descuento: </Text>
-               <Text style={styles.unidad}>Dato </Text>
+               <Text style={styles.unidad}>{descuento}</Text>
 
                </View>
          
