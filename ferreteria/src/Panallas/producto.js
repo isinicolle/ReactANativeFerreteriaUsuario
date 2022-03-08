@@ -1,13 +1,13 @@
 import { useState,useEffect  } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView } from 'react-native';
+import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView , Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ScrollerNumero from '../componentes/ScrollerNumero'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
 const idproducto=3;
 let primera=true;
 const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto="+idproducto;
-
+const carri="http://192.168.1.8:6001/api/carrito/agregarProducto?idUsuario=2"
 const Pantalla = () => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
@@ -43,6 +43,32 @@ const Pantalla = () => {
         }
     }
 
+    
+    const anadircarrito= async() => {
+        try {
+            const respuesta = await fetch(
+             carri,{
+                 method: 'POST',
+                 headers:{
+                     Accept: 'application/json',
+                     'Content-Type': 'application/json'},
+                  body: JSON.stringify({
+                    
+                        idProducto:3,
+                        Cantidad:2
+                    
+                  })
+              
+                 } );
+                 const json= await respuesta.json();
+                 console.log(json);
+                 Alert.alert("MEDI","Peticion procesada");
+                 cargar();
+        } catch (error) {
+            console.error(error);
+        } 
+      }
+
 
     return (
         <ScrollView>
@@ -67,7 +93,7 @@ const Pantalla = () => {
                     <Text style={styles.unidad}>{cantidadxunidad}</Text>
                 </View>
                 <View style={styles.carri}>
-                    <Pressable style={styles.button}  >
+                    <Pressable style={styles.button} onPress={anadircarrito} >
                         <Text style={styles.text}>Añadir al carrito</Text>
                     </Pressable>
                 </View>

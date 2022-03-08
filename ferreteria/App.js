@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <SafeAreaView>
-      <Configuraciones/>
+      <Pantalla/>
     </SafeAreaView>
   );
 }
