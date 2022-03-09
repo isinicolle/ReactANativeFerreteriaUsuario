@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component} from 'react';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
@@ -8,6 +8,7 @@ import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 export default class olvidarcontra extends Component{
   render() {
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
     <Text style={styles.header}>¿Necesitas ayuda para recuperar tu contraseña?</Text>
@@ -19,6 +20,7 @@ export default class olvidarcontra extends Component{
     </View>
     <Footer/>
   </SafeAreaView>
+    </ScrollView>
   );
 }
 }
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
   
   header:{
     color:'#000',
-    fontFamily:'Arial' ,
+    fontFamily:'Arial' || null ,
     fontFamily:'sans-serif',
     fontStyle:'normal',
     fontWeight:'bold',
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
  
   h1Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'bold',
     fontSize:18,
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
   },
   h2Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'normal',
     fontSize:16,

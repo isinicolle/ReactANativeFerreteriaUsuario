@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView, Alert, AsyncStorage} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 import react,{useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Pantalla = ()=> {
   const [user,setUser] = useState('');
   const [pass,setPass] = useState('');
@@ -32,7 +33,7 @@ try{
     idCliente:json.data.data.id_cliente,
     idUsuario:json.data.data.id_usuarioCliente
   }
-  console.log(info)
+  await AsyncStorage.setItem('info', info);
 }
 catch(err){
   console.log(err)
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
   
   header:{
     color:'#000',
-    fontFamily:'Arial' ,
+    fontFamily:'Arial' || null ,
     fontFamily:'sans-serif',
     fontStyle:'normal',
     fontWeight:'bold',
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
  
   h1Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'bold',
     fontSize:18,
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
   },
   h2Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'normal',
     fontSize:16,

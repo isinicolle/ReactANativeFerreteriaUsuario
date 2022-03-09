@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Picker} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Picker,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Pickers} from '../componentes/'
 
 
 const Pantalla = ()=> {
   return (
+    <ScrollView>
+
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
     <Text style={styles.header}>¡Hola! Nos alegramos de verte de nuevo.</Text>
@@ -20,6 +22,7 @@ const Pantalla = ()=> {
     </View>
     <Footer/>
   </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -64,7 +67,7 @@ const styles = StyleSheet.create({
   
   header:{
     color:'#000',
-    fontFamily:'Arial' ,
+    fontFamily:'Arial' || null ,
     fontFamily:'sans-serif',
     fontStyle:'normal',
     fontWeight:'bold',
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
  
   h1Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'bold',
     fontSize:18,
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
   },
   h2Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'normal',
     fontSize:16,

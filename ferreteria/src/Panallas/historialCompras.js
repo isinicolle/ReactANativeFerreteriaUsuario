@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View, Image, SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View, Image, SafeAreaView,ScrollView} from 'react-native';
 import {Footer, Header} from '../componentes'
 
 export default function App() {
     return (
+        <ScrollView>
+
         <SafeAreaView style={styles.container}>
             <Header  busqueda={true} carrito={false} icon={'chevron-left'}></Header>
             <View style={styles.contenedorApp}>
@@ -39,6 +41,7 @@ export default function App() {
                 </View>
             </View>
         </SafeAreaView>
+        </ScrollView>
     );
 }
 

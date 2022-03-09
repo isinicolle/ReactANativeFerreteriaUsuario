@@ -4,11 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,ListaCarrito} from '../componentes/'
 
 
-const Carrito = ()=> {
+const Carrito = ({id})=> {
   return (
     <SafeAreaView style={styles.container}>
-        <ListaCarrito />
-        
+        <ListaCarrito id={id}/>
     </SafeAreaView>
   );
 }

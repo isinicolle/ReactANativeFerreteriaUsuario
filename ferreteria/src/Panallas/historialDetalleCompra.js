@@ -107,14 +107,14 @@ const styles = StyleSheet.create({
     },
     cantidad: {
         fontSize: 18,
-        fontFamily: 'Arial',
+        fontFamily: 'Arial' || null,
         fontFamily: 'sans-serif',
         fontStyle: 'normal',
         fontWeight: 'bold',
     },
     unidad: {
         fontSize: 18,
-        fontFamily: 'Arial',
+        fontFamily: 'Arial' || null,
         fontFamily: 'sans-serif',
         fontStyle: 'normal',
     },

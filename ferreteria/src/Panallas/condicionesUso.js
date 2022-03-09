@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View,ScrollView} from 'react-native';
 import {Header, Footer} from '../componentes/'
 
 export default function App() {
     return (
+        <ScrollView>
+
         <View style={styles.container}>
             <Header text={'Condiciones'} icon={'chevron-left'}></Header >
             <View style={styles.contenedorApp}>
@@ -38,6 +40,7 @@ export default function App() {
             </View>
 
         </View>
+        </ScrollView>
     );
 }
 

@@ -6,9 +6,9 @@ import ScrollerNumero from '../componentes/ScrollerNumero'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
 const idproducto=3;
 let primera=true;
-const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto="+idproducto;
-const carri="http://192.168.1.8:6001/api/carrito/agregarProducto?idUsuario=2"
-const Pantalla = () => {
+const productoURL="http://192.168.100.48:6001/api/productos/buscarProducto?id_producto=3";
+const carri="http://192.168.100.48:6001/api/carrito/agregarProducto?idUsuario=2"
+const Pantalla = ({id}) => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
     const [descripcion,setDescripcion]=useState(null);
@@ -74,7 +74,7 @@ const Pantalla = () => {
         <ScrollView>
         <View style={styles.container}>
             <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
-            <Image style={styles.logo} source={{uri:('http://192.168.1.8:6001/img/'+imagen)}} />
+            <Image style={styles.logo} source={{uri:('http://192.168.100.48:6001/img/'+imagen)}} />
             <Text style={styles.nomProducto}>{descripcion}</Text>
             <Text style={styles.cat}>{categoria}</Text>
 

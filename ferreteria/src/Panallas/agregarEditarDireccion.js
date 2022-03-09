@@ -1,8 +1,12 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView,ScrollView} from 'react-native';
+
 import {Boton,TextBox,Footer, Texts, Header} from '../componentes/'
 
 export default function App() {
     return (
+        
+
+        
     <SafeAreaView style={styles.container}>
         <Header text={'Agregar/Editar Direccion de Envio'} icon={'chevron-left'}></Header >
         <View style={styles.contenedorApp}>
@@ -15,25 +19,20 @@ export default function App() {
             <View style={styles.atributos}>
                 <Text style={styles.tituloAtributos}> Ciudad </Text>
                     <View style={styles.combo}>
-                        <select >
-                            <option value="Tegucigalpa">Tegucigalpa</option>
-                            <option value="San Pedro Sula">San Pedro Sula</option>
-                        </select>
+                        
                     </View>
             </View>
             <View style={styles.atributos}>
                 <Text style={styles.tituloAtributos}> Departamento </Text>
                     <View>
-                        <select>
-                            <option value="Tegucigalpa">Choluteca</option>
-                            <option value="San Pedro Sula">Cortes</option>
-                        </select>
+                       
                     </View>
             </View>
             <Boton text={'Guardar Cambios'}/>
         </View>
         <View><Footer></Footer></View>
   </SafeAreaView>
+
     );
 }
 

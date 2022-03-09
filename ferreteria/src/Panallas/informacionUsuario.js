@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts, Header} from '../componentes/'
 const idcliente=7
 let primera=true;
-const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente="+idcliente
-const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente="+idcliente
+const clienteURL="http://192.168.100.48:6001/api/clientes/buscarCliente?id_cliente="+idcliente
+const clienteActu="http://192.168.100.48:6001/api/clientes/actualizarCliente?id_cliente="+idcliente
 
 const Configuraciones=() => {
     const [isLoading,setLoading]= useState(true);

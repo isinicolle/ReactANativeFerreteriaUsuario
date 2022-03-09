@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   
   header:{
     color:'#000',
-    fontFamily:'Arial' ,
+    fontFamily:'Arial' || null ,
     fontFamily:'sans-serif',
     fontStyle:'normal',
     fontWeight:'bold',
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
  
   h1Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'bold',
     fontSize:18,
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   h2Tarjeta:{
     color:'#000',
-    fontFamily:'Arial',
+    fontFamily:'Arial' || null,
     fontStyle:'normal',
     fontWeight:'normal',
     fontSize:16,
