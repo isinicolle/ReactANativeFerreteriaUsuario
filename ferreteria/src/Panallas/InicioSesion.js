@@ -5,25 +5,23 @@ import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 import react,{useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const Pantalla = ()=> {
+const Pantalla = ({navigation})=> {
   const [user,setUser] = useState('');
   const [pass,setPass] = useState('');
   const [log,setLog] = useState(false)
 
-
 const handleLogin = async ()=>{
 try{
-    const res = await fetch('http://192.168.100.48:6001/api/usuarioCliente/loginUsuarioCliente',
+    const res = await fetch('http://192.168.0.2:6001/api/usuarioCliente/loginUsuarioCliente',
     {method:'POST',
     headers:{
       Accept:'application/json',
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
-      correo_usuario:user
+        correo_usuario:user
       ,contraenia_usuario:pass
     })
-  
   }
   );
   const json = await res.json()
@@ -34,13 +32,15 @@ try{
     idUsuario:json.data.data.id_usuarioCliente
   }
   await AsyncStorage.setItem('info', info);
+  otraPantalla()
 }
 catch(err){
   console.log(err)
 }
+}
 
-
-
+function otraPantalla (){
+  navigation.replace("Inicio")
 }
 
   return (
@@ -53,7 +53,7 @@ catch(err){
     <View style={styles.tarjeta}>
         <TextBox value={user} setValue={setUser} text={'Correo electrónico'} icon={'email'} />
         <PasswordBox value={pass} setValue={setPass} text={'Contraseña'}/>
-        <Boton text={'Iniciar Sesion'}   onPress={handleLogin} />
+        <Boton text={'Iniciar Sesion'} onPress={handleLogin} />
         <HiperVinculo text={'¿Has olvidado la contraseña?'}/>
         <Text style={styles.h1Tarjeta}>¿Todavia no estas registrado?</Text>
         <Text style={styles.h2Tarjeta}>Registrate ya</Text>

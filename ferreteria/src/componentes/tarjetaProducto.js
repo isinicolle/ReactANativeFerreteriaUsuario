@@ -1,12 +1,12 @@
 import React from 'react'
 import { Pressable,StyleSheet,Text,TouchableOpacity, View,TextInput,Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-const TarjetaProducto = ({text,precio,imagen })=>{
+const TarjetaProducto = ({text,precio,imagen, navigation})=>{
     return (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Producto")}>
         <View style={styles.container}>
             
-            <Image source = {{uri:('http://192.168.100.48:6001/img/'+imagen)}} style={styles.imagen} />
+            <Image source = {{uri:('http://192.168.0.2:6001/img/'+imagen)}} style={styles.imagen} />
             <Text style={styles.detalle}>
                 {text}
             </Text>

@@ -16,8 +16,10 @@ const dataProducto = [
     new Producto(3,"Gasolina",'https://m.media-amazon.com/images/I/71aQtUldu+L._AC_SL1500_.jpg','1200 peso'),
     new Producto(4,"Gasolina",'https://m.media-amazon.com/images/I/71aQtUldu+L._AC_SL1500_.jpg','1200 peso'),
 ] 
-const ListaProducto  = ({ onPress,text,tipo,id})=>{
+
+const ListaProducto  = ({ text,tipo,id, navigation})=>{
     const[productos,setProductos] = useState()
+    
     useEffect( async () => {
         var a 
        (tipo==1? (a= await conseguirCategoria(id)):a=await(conseguirMarca(id)))
@@ -26,14 +28,14 @@ const ListaProducto  = ({ onPress,text,tipo,id})=>{
       }, []);
     return (
         <View style={{width:'100%',flex:1,flexDirection:'column'}}>
-        <TouchableOpacity style={styles.HeaderContainer}  >
+        <TouchableOpacity style={styles.HeaderContainer}>
                 <Text style={styles.Header}>
                     {text}
                 </Text>
                 <Icon name={'chevron-right'} style={{flex:1}} size={30}/>
             </TouchableOpacity>
         <View style={styles.Lista}>
-            <FlatList horizontal={true} data={productos} keyExtractor={item=>item.id_producto} renderItem={renderizarLista}  /> 
+            <FlatList horizontal={true} data={productos} keyExtractor={item=>item.id_producto} renderItem={renderizarLista} navigation={navigation}/> 
         </View>
         </View>
         )
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
 })
 async function conseguirCategoria(id){
     try{
-        const res = await fetch('http://192.168.100.48:6001/api/categoria/listarCategoriaPorProducto?idcategoria='+id,
+        const res = await fetch('http://192.168.0.2:6001/api/categoria/listarCategoriaPorProducto?idcategoria='+id,
         {method:'GET',
         headers:{
           Accept:'application/json',
@@ -78,7 +80,7 @@ async function conseguirCategoria(id){
 }
 async function conseguirMarca(id){
     try{
-        const res = await fetch('http://192.168.100.48:6001/api/marca/ProductoPorMarca?idmarca='+id,
+        const res = await fetch('http://192.168.0.2:6001/api/marca/ProductoPorMarca?idmarca='+id,
         {method:'GET',
         headers:{
           Accept:'application/json',
@@ -93,9 +95,9 @@ async function conseguirMarca(id){
         console.log(err)
     }
 }
-const renderizarLista = ({item})=>{
+const renderizarLista = ({item, navigation})=>{
     return(
-        <TarjetaProducto precio={item.precio_actual} imagen={item.imagen} text={item.descripcion_producto}/>
+        <TarjetaProducto precio={item.precio_actual} imagen={item.imagen} text={item.descripcion_producto} navigation={navigation}/>
     )
 }
 

@@ -8,7 +8,7 @@ const idproducto=3;
 let primera=true;
 const productoURL="http://192.168.100.48:6001/api/productos/buscarProducto?id_producto=3";
 const carri="http://192.168.100.48:6001/api/carrito/agregarProducto?idUsuario=2"
-const Pantalla = ({id}) => {
+const Pantalla = ({id, navigation}) => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
     const [descripcion,setDescripcion]=useState(null);

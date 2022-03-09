@@ -2,7 +2,7 @@ import React from 'react'
 import { View,TextInput,StyleSheet,Text,TouchableOpacity } from 'react-native'
 import Icons from 'react-native-vector-icons/MaterialIcons'
 
-const Texts = ({value,setValue,text,icon})=>{
+const Texts = ({value, setValue, text, icon})=>{
     return (
         <View style={styles.container}>
     <Icons name={icon} size={20}/>

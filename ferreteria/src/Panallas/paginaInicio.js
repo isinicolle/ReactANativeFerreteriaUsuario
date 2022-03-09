@@ -2,9 +2,9 @@ import React from 'react'
 import { StatusBar,TouchableOpacity,TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,ListaProducto,TarjetaProducto} from '../componentes/'
+import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header, ListaProducto, TarjetaProducto } from '../componentes/'
 
-const PantallaInicio = ()=> {
+const PantallaInicio = ({navigation})=> {
     return (
         <ScrollView>
 
@@ -27,9 +27,9 @@ const PantallaInicio = ()=> {
             </View>
         </TouchableOpacity>
         </View>
-        <ListaProducto tipo={1} text={'Agricultura'} id={2}/>
-        <ListaProducto tipo={2} text={'TRUPPER'} id={1}/>
-        <ListaProducto tipo={1} text={'Soldadura'} id={1}/>
+        <ListaProducto tipo={1} text={'Agricultura'} id={2} navigation={navigation}/>
+        <ListaProducto tipo={2} text={'TRUPPER'} id={1} navigation={navigation}/>
+        <ListaProducto tipo={1} text={'Soldadura'} id={1} navigation={navigation}/>
         
         <Footer/>
     </SafeAreaView> 
