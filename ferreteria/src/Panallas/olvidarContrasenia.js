@@ -1,12 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { Component} from 'react';
+import React, { Component,useState} from 'react';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
 
-export default class olvidarcontra extends Component{
-  render() {
+const olvidarcontra = ()=>{
+  const [email,setEmail] = useState('')
+    const handleRecuperar = async ()=>{
+      try{
+        const res = await fetch('http://192.168.100.48:6001/api/usuarioCliente/recoveryclave?correo_usuario='+email,
+        {method:'GET',
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
+      }
+      )
+       console.log('hecho')
+      }catch{
+
+      }
+
+
+    }
   return (
     <ScrollView>
     <SafeAreaView style={styles.container}>
@@ -15,15 +32,15 @@ export default class olvidarcontra extends Component{
   
     <View style={styles.tarjeta}>
         <Text style={styles.header}>Ingresa el correo asocaido a tu cuenta</Text>
-        <TextBox text={'Correo electrónico'} icon={'email'} />
-        <Boton text={'Continuar'} />
+        <TextBox text={'Correo electrónico'} value={email} setValue={setEmail} icon={'email'} />
+        <Boton onPress={handleRecuperar} text={'Continuar'} />
     </View>
     <Footer/>
   </SafeAreaView>
     </ScrollView>
   );
 }
-}
+
 
 
 const styles = StyleSheet.create({
@@ -98,3 +115,4 @@ const styles = StyleSheet.create({
   }
 
 })
+export default olvidarcontra

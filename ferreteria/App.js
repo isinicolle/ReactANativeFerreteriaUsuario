@@ -38,9 +38,9 @@ export default function App() {
     {/*<Config/>*/}
     {/*<ConfirmarCorreo/>*/}
     {/*<Direcciones/>*/}
-    {<Carrito id={2}/>}
+    {/*<Carrito id={2}/>*/}
     {/*<Pago id={2}/>*/}
-    {/*<OlvidarContra/>*/}
+    {<OlvidarContra/>}
     {/*<RegistroTerminado/>*/}
     {/*<Busqueda/>*/}
     {/*<InformacionUsuario/>*/}
