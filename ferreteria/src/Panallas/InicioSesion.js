@@ -33,6 +33,7 @@ try{
     idCliente:json.data.data.id_cliente,
     idUsuario:json.data.data.id_usuarioCliente
   }
+  console.log(info);
   await AsyncStorage.setItem('token', info.token);
   await AsyncStorage.setItem('idCliente', info.idCliente + '');
   await AsyncStorage.setItem('idUsuario', info.idUsuario + '');

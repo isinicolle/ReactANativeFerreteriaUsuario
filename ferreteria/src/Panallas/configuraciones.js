@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function App({route}) {
     const nav=useNavigation();
+    const [user,setUser]=useState();
+    const [cli,setCli]=useState();
+    useEffect(async ()=>{
+        await AsyncStorage.getItem("idCliente").then((data)=>{setCli(data)});
+        await AsyncStorage.getItem("idUsuario").then((data)=>{setUser(data)});
+
+    },route)
     return (
         <ScrollView>
         <View style={styles.container}>
@@ -20,7 +28,7 @@ export default function App({route}) {
 
                             <Text style={styles.subtituloConfiguraciones}>Inicio</Text>
                         </View>
-                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('Direcciones',{idUsu:route.params.idUsu})}}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('Direcciones',{idUsu:user})}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Dirrecciones de envio</Text></View>
@@ -28,7 +36,7 @@ export default function App({route}) {
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('InformacionUsuario',{idCli:route.params.idCli})}}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('InformacionUsuario',{idCli:cli})}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Información de cuenta</Text></View>

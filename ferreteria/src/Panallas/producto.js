@@ -3,14 +3,15 @@ import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView , Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ScrollerNumero from '../componentes/ScrollerNumero';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
 let primera=true;
-const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto=";
-const carri="http://192.168.1.8:6001/api/carrito/agregarProducto?idUsuario="
+const productoURL="http://192.168.100.48:6001/api/productos/buscarProducto?id_producto=";
+const carri="http://192.168.100.48:6001/api/carrito/agregarProducto?idUsuario="
 const Pantalla = ({route}) => {
     const cantidadProp=0;
+    const [user,setUser]= useState();
     const [cantidad,setCantidad]= useState(cantidadProp);
     const [descripcion,setDescripcion]=useState(null);
     const [cantidadxunidad,setCantidadxUnidad]=useState(null);
@@ -20,17 +21,20 @@ const Pantalla = ({route}) => {
     const [imagen,setImagen]=useState(null);
     const [marca,setMarca]=useState(null);
     const [categoria,setCategoria]=useState(null);
-    
+    console.log(route.params.idProd)
    
 
 
-    useEffect(()=>{
+    useEffect(async ()=>{
         cargar();
-    })
+        await AsyncStorage.getItem("idUsuario").then((data)=>{
+            setUser(data);
+        })
+    },[route])
 
     const cargar= async() => {
-        if(primera==true){
-            fetch(productoURL+route.params.idProd).then((response)=> response.json())
+      
+          await  fetch(productoURL+route.params.idProd).then((response)=> response.json())
             .then((json)=>{
                 setDescripcion(json.descripcion_producto);
                 setCantidadxUnidad(json.cantidad_por_unidad);
@@ -43,22 +47,22 @@ const Pantalla = ({route}) => {
                 primera=false;
             })
             .catch((error)=>console.log(error))
-        }
+        
     }
 
     
     const anadircarrito= async() => {
         try {
             const respuesta = await fetch(
-             carri+route.params.idUsu,{
+             carri+user,{
                  method: 'POST',
                  headers:{
                      Accept: 'application/json',
                      'Content-Type': 'application/json'},
                   body: JSON.stringify({
-                    
-                        idProducto:Number(idProd) ,
-                        Cantidad:2
+                        
+                        idProducto:Number(route.params.idProd) ,
+                        Cantidad:cantidad
                     
                   })
               
@@ -78,7 +82,7 @@ const Pantalla = ({route}) => {
         <ScrollView>
         <View style={styles.container}>
             <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
-            <Image style={styles.logo} source={{uri:('http://192.168.1.8:6001/img/'+imagen)}} />
+            <Image style={styles.logo} source={{uri:('http://192.168.100.48:6001/img/'+imagen)}} />
             <Text style={styles.nomProducto}>{descripcion}</Text>
             <Text style={styles.cat}>{categoria}</Text>
 

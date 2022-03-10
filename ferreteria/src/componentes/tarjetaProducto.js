@@ -6,7 +6,7 @@ const TarjetaProducto = ({item, navigation})=>{
 
     const nav = useNavigation();
     const handlePress = ()=>{
-        nav.push('Producto')
+        nav.push('Producto',{idProd:item.id_producto})
     }
 
     return (

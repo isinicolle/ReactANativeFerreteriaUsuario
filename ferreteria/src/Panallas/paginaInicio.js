@@ -21,9 +21,9 @@ const PantallaInicio = ({route,navigation})=> {
                 <Text style={{color:'#B9B9B9'}}>Hogar</Text>
             </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Config')}}>
             <View style={styles.accesoRapido}>
-                <Text style={{color:'#B9B9B9'}}>usuario</Text>
+                <Text style={{color:'#B9B9B9'}}>Configuracion</Text>
             </View>
         </TouchableOpacity>
         </View>

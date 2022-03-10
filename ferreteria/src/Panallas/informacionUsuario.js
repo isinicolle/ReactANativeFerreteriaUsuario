@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts, Header} from '../componentes/'
 const idcliente=7
 let primera=true;
-const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente=";
-const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente=";
+const clienteURL="http://192.168.100.48:6001/api/clientes/buscarCliente?id_cliente=";
+const clienteActu="http://192.168.100.48:6001/api/clientes/actualizarCliente?id_cliente=";
 
 const Configuraciones=({route}) => {
   
@@ -21,10 +21,10 @@ const Configuraciones=({route}) => {
     
     useEffect(()=>{
         cargar();
-    })
+    },[Configuraciones])
 
     const cargar= async() => {
-        if(primera==true){
+       
             fetch(clienteURL+route.params.idCli).then((response)=> response.json())
             .then((json)=>{
                 setData(json.id_cliente);
@@ -36,7 +36,7 @@ const Configuraciones=({route}) => {
                 primera=false;
             })
             .catch((error)=>console.log(error))
-        }
+        
     }
 
 
