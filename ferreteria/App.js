@@ -1,9 +1,7 @@
 import React from "react";
-import Configuraciones from "./src/Panallas/configuraciones";
-import Menu from "./src/Panallas/Menu";
-import Pantalla from "./src/Panallas/producto";
+import Configuraciones from "./src/Panallas/informacionUsuario";
 export default function App() {
     return (
-    <Menu/>
+    <Configuraciones idCli={7}/>
     );
   }

@@ -5,11 +5,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Texts, Header} from '../componentes/'
 const idcliente=7
 let primera=true;
-const clienteURL="http://192.168.100.48:6001/api/clientes/buscarCliente?id_cliente="+idcliente
-const clienteActu="http://192.168.100.48:6001/api/clientes/actualizarCliente?id_cliente="+idcliente
+const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente=";
+const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente=";
 
-const Configuraciones=() => {
-    const [isLoading,setLoading]= useState(true);
+const Configuraciones=({idCli}) => {
     const [data,setData]=useState(null);
     const [nombre,setNombre]=useState(null);
     const [apellido,setApellido]=useState(null);
@@ -25,7 +24,7 @@ const Configuraciones=() => {
 
     const cargar= async() => {
         if(primera==true){
-            fetch(clienteURL).then((response)=> response.json())
+            fetch(clienteURL+idCli).then((response)=> response.json())
             .then((json)=>{
                 setData(json.id_cliente);
                 setNombre(json.nom_cliente);
@@ -43,7 +42,7 @@ const Configuraciones=() => {
     const presGuardarCambio= async() => {
       try {
           const respuesta = await fetch(
-           clienteActu,{
+           clienteActu+idCli,{
                method: 'PUT',
                headers:{
                    Accept: 'application/json',
@@ -59,7 +58,7 @@ const Configuraciones=() => {
                } );
                const json= await respuesta.json();
                console.log(json);
-               Alert.alert("MEDI","Peticion procesada");
+               Alert.alert("FERRETEAR","Datos editados correctamente");
                cargar();
       } catch (error) {
           console.error(error);

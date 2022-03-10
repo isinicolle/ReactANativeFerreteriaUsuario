@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView , Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ScrollerNumero from '../componentes/ScrollerNumero';
-import {useNavigation} from '@react-navigation/native';
+
 
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
 let primera=true;
@@ -57,7 +57,7 @@ const Pantalla = ({idProd,idUsu}) => {
                      'Content-Type': 'application/json'},
                   body: JSON.stringify({
                     
-                        idProducto:idProd,
+                        idProducto:Number(idProd) ,
                         Cantidad:2
                     
                   })
