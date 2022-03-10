@@ -1,14 +1,15 @@
 import { useState,useEffect  } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View, Image, SafeAreaView,Pressable, ScrollView , Alert} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import ScrollerNumero from '../componentes/ScrollerNumero'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import ScrollerNumero from '../componentes/ScrollerNumero';
+import {useNavigation} from '@react-navigation/native';
+
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../componentes/'
-const idproducto=3;
 let primera=true;
-const productoURL="http://192.168.100.48:6001/api/productos/buscarProducto?id_producto=3";
-const carri="http://192.168.100.48:6001/api/carrito/agregarProducto?idUsuario=2"
-const Pantalla = ({id, navigation}) => {
+const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto=";
+const carri="http://192.168.1.8:6001/api/carrito/agregarProducto?idUsuario="
+const Pantalla = ({idProd,idUsu}) => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
     const [descripcion,setDescripcion]=useState(null);
@@ -19,6 +20,8 @@ const Pantalla = ({id, navigation}) => {
     const [imagen,setImagen]=useState(null);
     const [marca,setMarca]=useState(null);
     const [categoria,setCategoria]=useState(null);
+    
+   
 
 
     useEffect(()=>{
@@ -27,7 +30,7 @@ const Pantalla = ({id, navigation}) => {
 
     const cargar= async() => {
         if(primera==true){
-            fetch(productoURL).then((response)=> response.json())
+            fetch(productoURL+idProd).then((response)=> response.json())
             .then((json)=>{
                 setDescripcion(json.descripcion_producto);
                 setCantidadxUnidad(json.cantidad_por_unidad);
@@ -47,14 +50,14 @@ const Pantalla = ({id, navigation}) => {
     const anadircarrito= async() => {
         try {
             const respuesta = await fetch(
-             carri,{
+             carri+idUsu,{
                  method: 'POST',
                  headers:{
                      Accept: 'application/json',
                      'Content-Type': 'application/json'},
                   body: JSON.stringify({
                     
-                        idProducto:3,
+                        idProducto:idProd,
                         Cantidad:2
                     
                   })
@@ -62,19 +65,20 @@ const Pantalla = ({id, navigation}) => {
                  } );
                  const json= await respuesta.json();
                  console.log(json);
-                 Alert.alert("MEDI","Peticion procesada");
+                 Alert.alert("FERRETEAR","El producto a sido agregado a su carrito");
                  cargar();
         } catch (error) {
             console.error(error);
         } 
       }
 
-
+     
     return (
+        
         <ScrollView>
         <View style={styles.container}>
             <Header text={'Producto'} busqueda={false} carrito={true} icon={'chevron-left'}></Header>
-            <Image style={styles.logo} source={{uri:('http://192.168.100.48:6001/img/'+imagen)}} />
+            <Image style={styles.logo} source={{uri:('http://192.168.1.8:6001/img/'+imagen)}} />
             <Text style={styles.nomProducto}>{descripcion}</Text>
             <Text style={styles.cat}>{categoria}</Text>
 
