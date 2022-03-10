@@ -1,7 +1,7 @@
 import React from "react";
-import Configuraciones from "./src/Panallas/informacionUsuario";
+import PantallaDirecciones from "./src/Panallas/direcciones";
 export default function App() {
     return (
-    <Configuraciones idCli={7}/>
+    <PantallaDirecciones idUsu={2}/>
     );
   }

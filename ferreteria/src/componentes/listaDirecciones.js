@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
 async function obtenerdirecciones(id){
     try{
-        const res = await fetch('http://192.168.100.48:6001/api/direccionesEnvio/direccionEnvioXUsuario?id_usuarioCliente='+id,
+        const res = await fetch('http://192.168.1.8:6001/api/direccionesEnvio/direccionEnvioXUsuario?id_usuarioCliente='+id,
         {method:'GET',
         headers:{
           Accept:'application/json',

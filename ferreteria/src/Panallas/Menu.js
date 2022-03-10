@@ -10,7 +10,6 @@ export default function Menu() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Config" component={Config} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Inicio" component={Inicio} />
         <Stack.Screen name="Producto" component={Producto} />
@@ -20,7 +19,7 @@ export default function Menu() {
         <Stack.Screen name="HistorialDetalle" component={HistorialDetalle} />
         <Stack.Screen name="MisionVision" component={MisionVision} />
         <Stack.Screen name="Privacidad" component={Privacidad} />
-       
+        <Stack.Screen name="Config" component={Config} />
         <Stack.Screen name="ConfirmarCorreo" component={ConfirmarCorreo} />
         <Stack.Screen name="Direcciones" component={Direcciones} />
         <Stack.Screen name="Carrito" component={Carrito} />
