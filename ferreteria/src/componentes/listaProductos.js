@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
 })
 async function conseguirCategoria(id){
     try{
-        const res = await fetch('http://192.168.0.2:6001/api/categoria/listarCategoriaPorProducto?idcategoria='+id,
+        const res = await fetch('http://192.168.100.48:6001/api/categoria/listarCategoriaPorProducto?idcategoria='+id,
         {method:'GET',
         headers:{
           Accept:'application/json',
@@ -80,7 +80,7 @@ async function conseguirCategoria(id){
 }
 async function conseguirMarca(id){
     try{
-        const res = await fetch('http://192.168.0.2:6001/api/marca/ProductoPorMarca?idmarca='+id,
+        const res = await fetch('http://192.168.100.48:6001/api/marca/ProductoPorMarca?idmarca='+id,
         {method:'GET',
         headers:{
           Accept:'application/json',

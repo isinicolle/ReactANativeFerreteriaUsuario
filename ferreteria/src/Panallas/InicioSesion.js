@@ -5,14 +5,16 @@ import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 import react,{useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const Pantalla = ({navigation})=> {
+
+const Pantalla = ()=> {
   const [user,setUser] = useState('');
   const [pass,setPass] = useState('');
   const [log,setLog] = useState(false)
-
+  const nav=useNavigation();
 const handleLogin = async ()=>{
 try{
-    const res = await fetch('http://192.168.0.2:6001/api/usuarioCliente/loginUsuarioCliente',
+  
+    const res = await fetch('http://192.168.100.48:6001/api/usuarioCliente/loginUsuarioCliente',
     {method:'POST',
     headers:{
       Accept:'application/json',
@@ -25,23 +27,23 @@ try{
   }
   );
   const json = await res.json()
-
   const info ={
     token:json.data.token,
     idCliente:json.data.data.id_cliente,
     idUsuario:json.data.data.id_usuarioCliente
   }
-  await AsyncStorage.setItem('info', info);
-  otraPantalla()
+  await AsyncStorage.setItem('token', info.token);
+  await AsyncStorage.setItem('idCliente', info.idCliente + '');
+  await AsyncStorage.setItem('idUsuario', info.idUsuario + '');
+  
+  nav.navigate('Inicio');
 }
 catch(err){
   console.log(err)
 }
 }
 
-function otraPantalla (){
-  navigation.replace("Inicio")
-}
+
 
   return (
     <>
@@ -54,10 +56,14 @@ function otraPantalla (){
         <TextBox value={user} setValue={setUser} text={'Correo electrónico'} icon={'email'} />
         <PasswordBox value={pass} setValue={setPass} text={'Contraseña'}/>
         <Boton text={'Iniciar Sesion'} onPress={handleLogin} />
-        <HiperVinculo text={'¿Has olvidado la contraseña?'}/>
+        <HiperVinculo text={'¿Has olvidado la contraseña?'} onPress={()=>{
+          navigation.navigate("OlvidarContra")
+        
+
+        }} />
         <Text style={styles.h1Tarjeta}>¿Todavia no estas registrado?</Text>
         <Text style={styles.h2Tarjeta}>Registrate ya</Text>
-        <Boton text={'Crear Cuenta'} />
+        <Boton text={'Crear Cuenta'}  />
     </View>
     <Footer/>
       </View>

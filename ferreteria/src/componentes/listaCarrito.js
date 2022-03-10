@@ -25,6 +25,8 @@ const ListaCarrito  = ({ onPress,id})=>{
     useEffect( async () => {
         var a = await obtenerCarrito(id);
         await setProductos(a)
+        const idUser =  await AsyncStorage.getItem('idUsuario');
+  console.log(idUser);
       
       }, []);
     return (
