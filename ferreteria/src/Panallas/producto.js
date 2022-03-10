@@ -9,7 +9,7 @@ import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header} from '../com
 let primera=true;
 const productoURL="http://192.168.1.8:6001/api/productos/buscarProducto?id_producto=";
 const carri="http://192.168.1.8:6001/api/carrito/agregarProducto?idUsuario="
-const Pantalla = ({idProd,idUsu}) => {
+const Pantalla = ({route}) => {
     const cantidadProp=0;
     const [cantidad,setCantidad]= useState(cantidadProp);
     const [descripcion,setDescripcion]=useState(null);
@@ -30,7 +30,7 @@ const Pantalla = ({idProd,idUsu}) => {
 
     const cargar= async() => {
         if(primera==true){
-            fetch(productoURL+idProd).then((response)=> response.json())
+            fetch(productoURL+route.params.idProd).then((response)=> response.json())
             .then((json)=>{
                 setDescripcion(json.descripcion_producto);
                 setCantidadxUnidad(json.cantidad_por_unidad);
@@ -50,7 +50,7 @@ const Pantalla = ({idProd,idUsu}) => {
     const anadircarrito= async() => {
         try {
             const respuesta = await fetch(
-             carri+idUsu,{
+             carri+route.params.idUsu,{
                  method: 'POST',
                  headers:{
                      Accept: 'application/json',

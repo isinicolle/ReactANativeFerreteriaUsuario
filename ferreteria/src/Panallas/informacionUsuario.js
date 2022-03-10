@@ -8,7 +8,8 @@ let primera=true;
 const clienteURL="http://192.168.1.8:6001/api/clientes/buscarCliente?id_cliente=";
 const clienteActu="http://192.168.1.8:6001/api/clientes/actualizarCliente?id_cliente=";
 
-const Configuraciones=({idCli}) => {
+const Configuraciones=({route}) => {
+  
     const [data,setData]=useState(null);
     const [nombre,setNombre]=useState(null);
     const [apellido,setApellido]=useState(null);
@@ -24,7 +25,7 @@ const Configuraciones=({idCli}) => {
 
     const cargar= async() => {
         if(primera==true){
-            fetch(clienteURL+idCli).then((response)=> response.json())
+            fetch(clienteURL+route.params.idCli).then((response)=> response.json())
             .then((json)=>{
                 setData(json.id_cliente);
                 setNombre(json.nom_cliente);
@@ -42,7 +43,7 @@ const Configuraciones=({idCli}) => {
     const presGuardarCambio= async() => {
       try {
           const respuesta = await fetch(
-           clienteActu+idCli,{
+           clienteActu+route.params.idCli,{
                method: 'PUT',
                headers:{
                    Accept: 'application/json',

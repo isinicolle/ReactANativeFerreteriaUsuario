@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {useNavigation} from '@react-navigation/native';
 
 
-export default function App({idUsu,idCli}) {
+export default function App() {
     const nav=useNavigation();
     return (
         <ScrollView>
@@ -20,7 +20,7 @@ export default function App({idUsu,idCli}) {
 
                             <Text style={styles.subtituloConfiguraciones}>Inicio</Text>
                         </View>
-                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('Direcciones',{idUsu:idUsu})}}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('Direcciones',{idUsu:2})}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Dirrecciones de envio</Text></View>
@@ -28,7 +28,7 @@ export default function App({idUsu,idCli}) {
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('InformacionUsuario',{idCli:idCli})}}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('InformacionUsuario',{idCli:7})}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Información de cuenta</Text></View>
