@@ -20,7 +20,7 @@ export default function App() {
 
                             <Text style={styles.subtituloConfiguraciones}>Inicio</Text>
                         </View>
-                        <TouchableOpacity style={styles.contenedorTexto} onPress={nav.navigate('Direcciones')}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('Direcciones')}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Dirrecciones de envio</Text></View>
@@ -28,7 +28,7 @@ export default function App() {
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.contenedorTexto}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('InformacionUsuario')}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Información de cuenta</Text></View>
