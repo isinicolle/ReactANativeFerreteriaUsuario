@@ -1,7 +1,8 @@
 import React from "react";
-import PantallaDirecciones from "./src/Panallas/direcciones";
+import Configuraciones from "./src/Panallas/configuraciones";
+import Menu from "./src/Panallas/Menu";
 export default function App() {
     return (
-    <PantallaDirecciones idUsu={2}/>
+    <Menu />
     );
   }
