@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import {useNavigation} from '@react-navigation/native';
 
 
-
-export default function App() {
+export default function App({route}) {
+    const nav=useNavigation();
     return (
         <ScrollView>
         <View style={styles.container}>
@@ -19,38 +20,38 @@ export default function App() {
 
                             <Text style={styles.subtituloConfiguraciones}>Inicio</Text>
                         </View>
-                        <View style={styles.contenedorTexto}>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('Direcciones',{idUsu:route.params.idUsu})}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Dirrecciones de envio</Text></View>
                             <View style={styles.nav}>
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
-                        </View>
-                        <View style={styles.contenedorTexto}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.contenedorTexto} onPress={() => {nav.navigate('InformacionUsuario',{idCli:route.params.idCli})}}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Información de cuenta</Text></View>
                             <View style={styles.nav}>
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
-                        </View>
-                        <View style={styles.contenedorTexto}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Historial de compras</Text></View>
                             <View style={styles.nav}>
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
-                        </View>
-                        <View style={styles.contenedorTexto}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Cerrar sesion</Text></View>
                             <View style={styles.nav}>
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
-                        </View>
+                        </TouchableOpacity>
 
                     </View>
                     <View style={styles.cuenta2}>
@@ -58,22 +59,22 @@ export default function App() {
 
                             <Text style={styles.subtituloConfiguraciones}>Acerca de</Text>
                         </View>
-                        <View style={styles.contenedorTexto}>
+                        <TouchableOpacity style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Condiciones de uso</Text></View>
                             <View style={styles.nav}>
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
-                        </View>
-                        <View style={styles.contenedorTexto}>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
                                 <Text style={styles.texto}> Privacidad</Text></View>
                             <View style={styles.nav}>
                                 <Icon name="chevron-right" size={25}></Icon>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                         <TouchableOpacity style={styles.contenedorTexto}>
                             <View style={styles.opcion}>
                                 <Icon name="location-pin" size={20}></Icon>
