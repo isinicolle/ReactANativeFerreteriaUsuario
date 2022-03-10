@@ -1,11 +1,11 @@
 import React from 'react'
 import { Pressable,StyleSheet,Text,TouchableOpacity, View,TextInput,Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-const TarjetaDireccion = ({enviar=false,nombre,direccion,ciudad, depto})=>{
+const TarjetaDireccion = ({onPress,enviar=false,nombre,direccion,ciudad, depto})=>{
     return (
 
        
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onpress}>
             
         <View style={styles.container}>
         {enviar? 

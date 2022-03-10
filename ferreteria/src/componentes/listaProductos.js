@@ -97,7 +97,7 @@ async function conseguirMarca(id){
 }
 const renderizarLista = ({item, navigation})=>{
     return(
-        <TarjetaProducto precio={item.precio_actual} imagen={item.imagen} text={item.descripcion_producto} navigation={navigation}/>
+        <TarjetaProducto  item={item} navigation={navigation}/>
     )
 }
 

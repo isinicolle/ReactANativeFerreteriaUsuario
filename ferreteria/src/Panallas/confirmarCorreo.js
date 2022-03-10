@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 
 
-export default class olvidarcontra extends Component{
+export default class ConfirmarCorreo extends Component{
   render() {
   return (
     <ScrollView>

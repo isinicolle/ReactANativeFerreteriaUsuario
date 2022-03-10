@@ -4,10 +4,10 @@ import { StatusBar,TouchableOpacity,TextInput, StyleSheet, Text, View,Image,Safe
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header, ListaProducto, TarjetaProducto } from '../componentes/'
 
-const PantallaInicio = ({navigation})=> {
+const PantallaInicio = ({route,navigation})=> {
+    
     return (
         <ScrollView>
-
         <SafeAreaView style={styles.container}>
         <Header busqueda={true} carrito={true}icon={'menu'}/>
         <View style={{paddingTop:10,flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'center'}}>

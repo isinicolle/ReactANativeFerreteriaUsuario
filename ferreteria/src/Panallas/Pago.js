@@ -24,8 +24,9 @@ const dataProducto = [
     new Producto(5,"Gasolina",'Gas','Super','100peso','https://m.media-amazon.com/images/I/71aQtUldu+L._AC_SL1500_.jpg',1 ),
 ] 
 
-const Pago = ({id})=> {
+const Pago = ({route})=> {
     const[productos,setProductos] = useState()
+    const id = route.params.idUsuario
     useEffect( async () => {
         var a = await obtenerCarrito(id);
         await setProductos(a)
@@ -83,10 +84,7 @@ const RenderVacio = ()=>{
 const RenderFooter = (id)=>{
     const[direccion,setDireccion] = useState()
     useEffect( async () => {
-        var a = await obtenerdirecciones(id);
-        if (a)
-        await setDireccion(a)
-        
+         await obtenerdirecciones(id).then((data)=>{setDireccion(data)});
       }, []);
 
       const handleProcesar = async ()=>
@@ -150,6 +148,39 @@ const RenderFooter = (id)=>{
             </View>
        
         </>
+    )
+    else return (<>
+     <View style={styles.containerTabla}>
+            <View style={styles.tablaTotales}>
+                <View style={styles.filaTotal}>
+                    <Text style={{fontSize:20}}>Subtotal</Text>
+                    <Text style={{fontSize:20}}>Lps. {global.subtotal}</Text>
+                </View>
+                <View style={styles.filaTotal}>
+                    <Text style={{fontSize:20}}>Envio</Text>
+                    <Text style={{fontSize:20}}>Lps. {global.envio}</Text>
+                </View>
+                <View style={styles.filaTotal}>
+                    <Text style={{fontSize:20}}>Impuesto</Text>
+                    <Text style={{fontSize:20}}>Lps. {global.imp}</Text>
+                </View>
+                <View style={[styles.filaTotal,{borderBottomWidth:1}]}>
+                    <Text style={{fontSize:20}}>Descuento</Text>
+                    <Text style={{fontSize:20}}>Lps.  {global.descuento}</Text>
+                </View>
+                <View style={styles.filaTotal}>
+                    <Text style={{fontSize:20}}>Total</Text>
+                    <Text style={{fontSize:20}}>Lps. {global.total}</Text>
+                </View>
+            </View>
+            </View>
+            <TarjetaDireccion onPress={()=>{}} enviar={true} direccion={'No tiene direcciones, agregue una'}  />
+            <View style={styles.containerTabla}>
+            <View style={styles.containerFinal}>
+            <Text style={{fontSize:16,color:'gray',marginVertical:20}}>Al realizar este pedido acepta nuestras condiciones de uso y aviso de privacidad</Text>
+            <Boton onPress={handleProcesar} text={'Confirmar y pagar'}/>
+            </View>
+            </View></>
     )
     }
     

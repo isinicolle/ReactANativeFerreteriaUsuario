@@ -1,14 +1,28 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { Pressable,StyleSheet,Text,TouchableOpacity, View,TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-const Header = ({ onPress,text,icon,busqueda=false,carrito=false})=>{
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const Header = ({navigation, onPress,text,icon,busqueda=false,carrito=false})=>{
+    let [user,setUser] = useState('')
+    useEffect(  async ()=>{
+        await AsyncStorage.getItem("idUsuario").then((data)=>{
+            setUser(data);
+        })
+    },[navigation] )
+    const nav = useNavigation();
+    if(user)
     return (
         
         <View style={styles.container}>
-
-                <TouchableOpacity style={styles.btnHeader}>
+            <>
+            { (icon=='chevron-left')?  <TouchableOpacity onPress={()=> nav.pop()} style={styles.btnHeader}>
                     <Icon name={icon} size={50}/>
-                </TouchableOpacity>
+                </TouchableOpacity> : <TouchableOpacity onPress={()=> nav.pop()} style={styles.btnHeader}>
+                    <Icon name={icon} size={50}/>
+                </TouchableOpacity>  }
+            </>
+               
             {busqueda? 
             ( <View style={styles.containerBusqueda}>
                 <TextInput placeholder='Buscar producto' style={{flex:1}}>
@@ -22,9 +36,9 @@ const Header = ({ onPress,text,icon,busqueda=false,carrito=false})=>{
             <Text style={styles.header}>{text}</Text>//Falso
             }  
 
-            {carrito?   
+            {carrito?  
             
-                <TouchableOpacity style={styles.btnCarrito}>
+                <TouchableOpacity  onPress={()=> nav.navigate('Carrito', {idUsuario:user})}style={styles.btnCarrito}>
                     <Icon name='shopping-cart' size={30}/>
                 </TouchableOpacity>
           
@@ -33,9 +47,10 @@ const Header = ({ onPress,text,icon,busqueda=false,carrito=false})=>{
 
 
     )
+    else return (<View></View>)
 };
 const styles = StyleSheet.create({
-
+   
     container:{
         flex:1,
         maxHeight:150,

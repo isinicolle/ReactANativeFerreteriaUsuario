@@ -3,12 +3,12 @@ import { TextInput, StyleSheet, Text, View,Image,SafeAreaView} from 'react-nativ
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,ListaCarrito} from '../componentes/'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const Carrito = ({id})=> {
+const Carrito = ({route,idUsuario})=> {
   
- 
+  
   return (
     <SafeAreaView style={styles.container}>
-        <ListaCarrito id={id}/>
+        <ListaCarrito id={route.params.idUsuario}/>
     </SafeAreaView>
   );
 }

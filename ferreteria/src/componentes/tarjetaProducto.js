@@ -1,17 +1,24 @@
 import React from 'react'
 import { Pressable,StyleSheet,Text,TouchableOpacity, View,TextInput,Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-const TarjetaProducto = ({text,precio,imagen, navigation})=>{
+import { useNavigation } from '@react-navigation/native';
+const TarjetaProducto = ({item, navigation})=>{
+
+    const nav = useNavigation();
+    const handlePress = ()=>{
+        nav.push('Producto')
+    }
+
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("Producto")}>
+        <TouchableOpacity onPress={handlePress}>
         <View style={styles.container}>
             
-            <Image source = {{uri:('http://192.168.100.48:6001/img/'+imagen)}} style={styles.imagen} />
+            <Image source = {{uri:('http://192.168.100.48:6001/img/'+item.imagen)}} style={styles.imagen} />
             <Text style={styles.detalle}>
-                {text}
+                {item.descripcion_producto}
             </Text>
             <Text style={styles.precio}>
-                {precio}
+                Lps. {item.precio_actual}
             </Text>
         </View>
         </TouchableOpacity>

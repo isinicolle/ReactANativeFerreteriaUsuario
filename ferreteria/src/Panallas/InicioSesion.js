@@ -6,11 +6,12 @@ import react,{useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Pantalla = ()=> {
+const Pantalla = ({navigation})=> {
   const [user,setUser] = useState('');
   const [pass,setPass] = useState('');
   const [log,setLog] = useState(false)
   const nav=useNavigation();
+  useEffect(()=>{ },[navigation])
 const handleLogin = async ()=>{
 try{
   
@@ -35,12 +36,13 @@ try{
   await AsyncStorage.setItem('token', info.token);
   await AsyncStorage.setItem('idCliente', info.idCliente + '');
   await AsyncStorage.setItem('idUsuario', info.idUsuario + '');
-  
-  nav.navigate('Inicio');
+  await nav.navigate('Inicio');
+
 }
 catch(err){
   console.log(err)
 }
+
 }
 
 
@@ -55,9 +57,9 @@ catch(err){
     <View style={styles.tarjeta}>
         <TextBox value={user} setValue={setUser} text={'Correo electrónico'} icon={'email'} />
         <PasswordBox value={pass} setValue={setPass} text={'Contraseña'}/>
-        <Boton text={'Iniciar Sesion'} onPress={handleLogin} />
+        <Boton text={'Iniciar Sesion'} onPress={handleLogin } />
         <HiperVinculo text={'¿Has olvidado la contraseña?'} onPress={()=>{
-          navigation.navigate("OlvidarContra")
+          nav.push("OlvidarContra")
         
 
         }} />

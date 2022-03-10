@@ -3,9 +3,10 @@ import React, { Component,useState} from 'react';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
+import { useNavigation } from '@react-navigation/native';
 
-
-const olvidarcontra = ()=>{
+const OlvidarContra = ()=>{
+  const nav = useNavigation();
   const [email,setEmail] = useState('')
     const handleRecuperar = async ()=>{
       try{
@@ -18,6 +19,7 @@ const olvidarcontra = ()=>{
       }
       )
        console.log('hecho')
+       nav.navigate('Login');
       }catch{
 
       }
@@ -115,4 +117,4 @@ const styles = StyleSheet.create({
   }
 
 })
-export default olvidarcontra
+export default OlvidarContra
