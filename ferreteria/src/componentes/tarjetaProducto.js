@@ -13,7 +13,7 @@ const TarjetaProducto = ({item, navigation})=>{
         <TouchableOpacity onPress={handlePress}>
         <View style={styles.container}>
             
-            <Image source = {{uri:('http://192.168.100.48:6001/img/'+item.imagen)}} style={styles.imagen} />
+            <Image source = {{uri:((item.imagen.includes("http")? item.imagen :'http://192.168.100.48:6001/img/'+item.imagen ))}} style={styles.imagen} />
             <Text style={styles.detalle}>
                 {item.descripcion_producto}
             </Text>

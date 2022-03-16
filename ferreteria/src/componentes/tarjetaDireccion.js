@@ -1,11 +1,13 @@
 import React from 'react'
 import { Pressable,StyleSheet,Text,TouchableOpacity, View,TextInput,Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-const TarjetaDireccion = ({onPress,enviar=false,nombre,direccion,ciudad, depto})=>{
+import { useNavigation } from '@react-navigation/native';
+const TarjetaDireccion = ({idUsu,onPress,enviar=false,nombre,direccion,ciudad, depto})=>{
+    const nav =useNavigation();
     return (
 
        
-        <TouchableOpacity onPress={onpress}>
+        <TouchableOpacity onPress={()=>{nav.navigate('Direcciones',idUsu)}}>
             
         <View style={styles.container}>
         {enviar? 

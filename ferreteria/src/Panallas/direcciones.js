@@ -5,12 +5,13 @@ import { Boton, HiperVinculo, TextBox, PasswordBox, Footer, Header, TarjetaDirec
 const id=3;
 
 const PantallaDirecciones = ({route}) => {
+    console.log(route.params)
     return (
         <ScrollView>
         <View style={styles.container}>
             <Header busqueda={false} text={"Direcciones Envio"} carrito={true} icon={'chevron-left'}></Header>
             <View style={styles.tarjeta}>
-            <ListaDireccion id={route.params.idUsu}></ListaDireccion>
+            <ListaDireccion id={route.params.id}></ListaDireccion>
             </View>
 
             <Footer></Footer>

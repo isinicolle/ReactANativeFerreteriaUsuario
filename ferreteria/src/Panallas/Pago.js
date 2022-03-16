@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer,Header,TarjetaProducto,TarjetaCarrito,TarjetaDireccion} from '../componentes/'
 import React, { useState,useEffect} from 'react'
 import { Direcciones } from '.';
+import { useNavigation } from '@react-navigation/native';
 var total,subtotal,descuento,imp,envio
 class Producto{
     constructor(id_producto,descripcion_producto,categoria,marca,precio,imagen,cantidad){
@@ -82,6 +83,7 @@ const RenderVacio = ()=>{
     )
 }
 const RenderFooter = (id)=>{
+    const nav = useNavigation();
     const[direccion,setDireccion] = useState()
     useEffect( async () => {
          await obtenerdirecciones(id).then((data)=>{setDireccion(data)});
@@ -105,6 +107,7 @@ const RenderFooter = (id)=>{
           )
           const json = await res.json()
           console.log(json)
+          nav.navigate('Inicio');
         }catch(err){
          console.log(err);
         }
@@ -139,7 +142,7 @@ const RenderFooter = (id)=>{
                 </View>
             </View>
             </View>
-            <TarjetaDireccion  enviar={true} direccion={direccion.direccion}  nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
+            <TarjetaDireccion idUsu={{id}} enviar={true} direccion={direccion.direccion}  nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
             <View style={styles.containerTabla}>
             <View style={styles.containerFinal}>
             <Text style={{fontSize:16,color:'gray',marginVertical:20}}>Al realizar este pedido acepta nuestras condiciones de uso y aviso de privacidad</Text>
