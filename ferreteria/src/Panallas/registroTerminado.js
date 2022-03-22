@@ -2,21 +2,77 @@ import { StatusBar } from 'expo-status-bar';
 import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Picker,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Pickers} from '../componentes/'
-
+import { useState,useEffect } from 'react';
 
 const Pantalla = ()=> {
+  const [selectedCiudad,setSelectedCiudad] = useState('');
+  const [selectedDepartamento,setSelectedDepartamento]= useState('');
+  const [ciudades,setCiudades] = useState('');
+  const [departamentos,setDepartamentos] = useState('');
+
+  useEffect(()=>{
+    fetchDepartamentos();
+  },[])
+
+  useEffect(()=>{
+    fetchCiudades();
+  },[selectedDepartamento])
+    
+  const fetchCiudades =async ()=>{
+    if (selectedDepartamento.id_departamento)
+    try
+    {
+      const res = await fetch('http://192.168.100.48:6001/api/ciudades/listarCiudades?idDepartamento='+selectedDepartamento.id_departamento,
+        {method:'GET',
+          headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+          }
+        }
+      );
+      await res.json().then((data)=>{setCiudades(data); console.log(data)})
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+
+
+  const fetchDepartamentos= async ()=>{
+    try
+    {
+      const res = await fetch('http://192.168.100.48:6001/api/departamentos/listar',
+        {method:'GET',
+          headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+          }
+        }
+      );
+      await res.json().then((data)=>{setDepartamentos(data)})
+    }
+    catch(err){
+      console.log(err);
+    }
+  
+}
+  
+
+
+
+
+
   return (
     <ScrollView>
 
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
-    <Text style={styles.header}>¡Hola! Nos alegramos de verte de nuevo.</Text>
+    <Text style={styles.header}>Solo unos detalles mas...</Text>
   
     <View style={styles.tarjeta}>
         <TextBox text={'Telefono'} icon={'phone'} />
-        <Pickers text={'Departamento'} icon={'city'} />
-        <Pickers text={'Ciudad'} icon={'city-variant'}>
-        </Pickers>
+        <Pickers label={'nombreDepartamento'} selectedValue={selectedDepartamento} setSelectedValue={setSelectedDepartamento} items={departamentos} text={'Departamento'} icon={'city'} />
+        <Pickers label={'nombre_ciudad'} selectedValue={selectedCiudad} setSelectedValue={setSelectedCiudad} items={ciudades}  text={'Ciudad'} icon={'city-variant'}/>
         <TextBox text={'Direccion'} icon={'home'} />
         <Boton text={'Continuar'} />
     </View>

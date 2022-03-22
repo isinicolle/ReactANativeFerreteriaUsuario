@@ -1,21 +1,39 @@
-import React from 'react'
+import React,{ useState,useEffect } from 'react';
 import { View,TextInput,StyleSheet,Text,TouchableOpacity, Picker } from 'react-native'
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons'
 
-const Pickers = ({value,setValue,text,icon})=>{
+const Pickers = ({label,items,selectedValue,setSelectedValue,text,icon})=>{
+    
+    const renderItem= ()=>{
+        if (items)
+        return items.map((item)=>{
+            return <Picker.Item value={item}  label={item[''+label]}/>
+        });
+        else 
+        return <Picker.Item label={'No hay datos para cargar'}/>
+
+    }
+    
+    
+
     return (
+      
         <View style={styles.container}>
     <Icons name={icon} size={20}/>
         <Picker 
         style={styles.input}
-        value={value}
-        onChangeText={setValue} 
-        autoComplete
+        selectedValue={selectedValue}
+        onValueChange={(itemValue,itemIndex)=>{
+        setSelectedValue(itemValue);
+        console.log(selectedValue);
+        }} 
         placeholder={text}>
-             <Picker.Item label={text}/>
+        
+             {renderItem()}
         </Picker>
         </View>
     )
+
 }
 const styles = StyleSheet.create({
     container:{
@@ -24,7 +42,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         backgroundColor:'#fff',
-        padding:'5%',
+        padding:'3%',
         borderWidth:1.5,
         borderRadius:10,
         borderColor:'#6B6B6B',

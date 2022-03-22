@@ -1,10 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { Component} from 'react';
-import { TextInput, StyleSheet, Text, View,Image,SafeAreaView, Alert, AsyncStorage} from 'react-native';
+import { TextInput, StyleSheet, Text, View,Image,SafeAreaView,ScrollView , Alert} from 'react-native';
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer} from '../componentes/'
 import { useState } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Pantalla = ()=> {
+  const nav = useNavigation();
   const [nombre, setNombre]= useState('');
     const [correo, setCorreo]= useState('');
     const [contrasenia, setContrasenia]= useState('');
@@ -12,7 +15,7 @@ const Pantalla = ()=> {
       
       console.log(nombre);
         try{
-        const respuesta = await fetch(
+        /*const respuesta = await fetch(
           'http://192.168.0.8:6001/api/usuarioCliente/insertarUsuarioCliente',{
             method: 'POST',
            headers:{
@@ -26,12 +29,15 @@ const Pantalla = ()=> {
            })
           });
           const json = await respuesta.json();
-          console.log(json);
+          console.log(json);*/
+          nav.navigate('RegistroTerminado');
+          
          } catch(error){
            console.log(error);
         }
     }
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
     <Image style={styles.logo} source={require('../../assets/Images/Imagotipo.png')}/>
     <Text style={styles.header}>¡Nos encantará que seas parte de nosotros!</Text>
@@ -39,12 +45,13 @@ const Pantalla = ()=> {
     <View style={styles.tarjeta}>
         <TextBox text={'Nombre'} icon={'face'} setValue={setNombre} value={nombre}/>
         <TextBox text={'Correo electrónico'} icon={'email'} setValue={setCorreo} value={correo}/>
-        <PasswordBox text={'Contraseña'} />
+        <PasswordBox  text={'Contraseña'} />
         <PasswordBox text={'Confirmar contraseña'} setValue={setContrasenia} value={contrasenia}/>
         <Boton text={'Crear Cuenta'} onPress={usuarioNuevo}/>
     </View>
     <Footer/>
   </SafeAreaView>
+    </ScrollView>
   );
 }
 

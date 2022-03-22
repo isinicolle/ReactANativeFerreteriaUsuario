@@ -66,7 +66,7 @@ catch(err){
         }} />
         <Text style={styles.h1Tarjeta}>¿Todavia no estas registrado?</Text>
         <Text style={styles.h2Tarjeta}>Registrate ya</Text>
-        <Boton  text={'Crear Cuenta'}  />
+        <Boton  onPress={()=>{ nav.navigate('crearUsuario')}} text={'Crear Cuenta'}  />
     </View>
     <Footer/>
       </View>
