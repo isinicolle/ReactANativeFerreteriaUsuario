@@ -142,7 +142,11 @@ const RenderFooter = (id)=>{
                 </View>
             </View>
             </View>
-            <TarjetaDireccion idUsu={{id}} enviar={true} direccion={direccion.direccion}  nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
+            <View style={{width:'100%',flex:1, alignItems:'center'}}>
+                <View style={{width:'90%',flex:1, alignContent:'center'}}>
+                    <TarjetaDireccion idUsu={{id}} enviar={true} direccion={direccion.direccion} nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
+                </View>
+            </View>
             <View style={styles.containerTabla}>
             <View style={styles.containerFinal}>
             <Text style={{fontSize:16,color:'gray',marginVertical:20}}>Al realizar este pedido acepta nuestras condiciones de uso y aviso de privacidad</Text>

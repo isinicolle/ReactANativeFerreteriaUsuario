@@ -11,7 +11,7 @@ const PantallaDirecciones = ({route}) => {
         <View style={styles.container}>
             <Header busqueda={false} text={"Direcciones Envio"} carrito={true} icon={'chevron-left'}></Header>
             <View style={styles.tarjeta}>
-            <ListaDireccion id={route.params.id}></ListaDireccion>
+            <ListaDireccion id={route.params.idUsu}></ListaDireccion>
             </View>
 
             <Footer></Footer>
@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     tarjeta:{
-   flex:1,
-   flexDirection: 'column',
-   alignContent: 'flex-start',
+     flex:1,
+     flexDirection: 'column',
+     alignContent: 'flex-start',
 
     }
 
