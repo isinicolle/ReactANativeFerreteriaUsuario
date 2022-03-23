@@ -5,12 +5,12 @@ import Icons from 'react-native-vector-icons/MaterialCommunityIcons'
 const Pickers = ({label,items,selectedValue,setSelectedValue,text,icon})=>{
     
     const renderItem= ()=>{
-        if (items)
+        if (items.length>0)
         return items.map((item)=>{
             return <Picker.Item value={item}  label={item[''+label]}/>
         });
         else 
-        return <Picker.Item label={'No hay datos para cargar'}/>
+        return <Picker.Item label={text}/>
 
     }
     
@@ -28,7 +28,7 @@ const Pickers = ({label,items,selectedValue,setSelectedValue,text,icon})=>{
         console.log(selectedValue);
         }} 
         placeholder={text}>
-        
+
              {renderItem()}
         </Picker>
         </View>
