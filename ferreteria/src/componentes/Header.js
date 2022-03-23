@@ -16,9 +16,9 @@ const Header = ({navigation, onPress,text,icon,busqueda=false,carrito=false})=>{
         
         <View style={styles.container}>
             <>
-            { (icon=='chevron-left')?  <TouchableOpacity onPress={()=> nav.pop()} style={styles.btnHeader}>
+            { (icon=='chevron-left')?  <TouchableOpacity onPress={()=> nav.navigate('HistorialCompra', {idUsuario:user})} style={styles.btnHeader}>
                     <Icon name={icon} size={50}/>
-                </TouchableOpacity> : <TouchableOpacity onPress={()=> nav.pop()} style={styles.btnHeader}>
+                </TouchableOpacity> : <TouchableOpacity onPress={()=> nav.navigate('HistorialCompra', {idUsuario:user})} style={styles.btnHeader}>
                     <Icon name={icon} size={50}/>
                 </TouchableOpacity>  }
             </>

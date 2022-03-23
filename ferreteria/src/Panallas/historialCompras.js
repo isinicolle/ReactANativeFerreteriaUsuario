@@ -1,39 +1,46 @@
 import { StyleSheet, Text, View, Image, SafeAreaView,ScrollView} from 'react-native';
 import {Footer, Header} from '../componentes'
+import { useState, useEffect } from 'react'
 
 export default function App() {
+
+    const [info, setinfo] = useState([]);
+    
+    useEffect(()=>{
+        try {
+            const response = fetch("http://192.168.0.3:6001/api/ventas/historial?idCliente=7")
+              .then((response) => response.json())
+              .then((json) => {
+                setinfo(json);
+                console.log(json);
+              });
+          } catch (error) {
+            console.error(error);
+        }
+    }, [])
+    const tarjetasCompras = info.map(item => {
+        return(
+            <View style={styles.carta}>
+                <Image style={styles.imagen} source={require('../../assets/Images/Imagotipo.png')}/>
+                <View style={styles.texto}>
+                <Text style={styles.tituloAtributos}>ID Venta: {item.id_Venta}</Text>
+                    <Text style={styles.tituloAtributos}>Fecha: {item.fecha}</Text>
+                </View>
+                <View style={styles.texto}>
+                    <Text style={styles.tituloAtributos}>ID Direccion del cliente: {item.id_direccionEnvio}</Text>
+                    <Text style={styles.tituloAtributos}>ISV: {item.ISV}</Text>
+                    <Text style={styles.tituloAtributos}>Descuento: {item.descuento}</Text>
+                </View>
+            </View>
+        )
+    })
     return (
         <ScrollView>
-
         <SafeAreaView style={styles.container}>
             <Header  busqueda={true} carrito={false} icon={'chevron-left'}></Header>
             <View style={styles.contenedorApp}>
-              
                 <View style={styles.contenedorCarta}>
-                    <View style={styles.carta}>
-                        <Image style={styles.imagen} source={require('../../assets/Images/Imagotipo.png')}/>
-                        <View style={styles.texto}>
-                        <Text style={styles.tituloAtributos}>Nombre</Text>
-                            <Text style={styles.tituloAtributos}>Marca</Text>
-                            <Text style={styles.tituloAtributos}>Categoria</Text>
-                        </View>
-                        <View style={styles.texto}>
-                            <Text style={styles.tituloAtributos}>Cantidad: L.500</Text>
-                            <Text style={styles.tituloAtributos}>Fecha</Text>
-                        </View>
-                    </View>
-                    <View style={styles.carta}>
-                        <Image style={styles.imagen} source={require('../../assets/Images/Imagotipo.png')}/>
-                        <View style={styles.texto}>
-                        <Text style={styles.tituloAtributos}>Nombre</Text>
-                            <Text style={styles.tituloAtributos}>Marca</Text>
-                            <Text style={styles.tituloAtributos}>Categoria</Text>
-                        </View>
-                        <View style={styles.texto}>
-                            <Text style={styles.tituloAtributos}>Cantidad: L.500</Text>
-                            <Text style={styles.tituloAtributos}>Fecha</Text>
-                        </View>
-                    </View>
+                    {tarjetasCompras}
                 </View>
 
                 <View>
