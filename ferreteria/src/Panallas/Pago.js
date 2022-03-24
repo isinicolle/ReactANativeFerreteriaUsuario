@@ -28,6 +28,7 @@ const dataProducto = [
 const Pago = ({ route }) => {
     const [productos, setProductos] = useState()
     const id = route.params.idUsuario
+    console.log(id);
     useEffect(async () => {
         var a = await obtenerCarrito(id);
         await setProductos(a)
