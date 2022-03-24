@@ -2,8 +2,40 @@ import React from 'react'
 import { Pressable,StyleSheet,Text,TouchableOpacity, View,TextInput,Image } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native';
-const TarjetaDireccion = ({idUsu,onPress,enviar=false,nombre,direccion,ciudad, depto})=>{
+const TarjetaDireccion = ({idUsu,onPress,enviar=false,nombre,direccion,ciudad, depto,editar=false,idDir})=>{
     const nav =useNavigation();
+   
+    if (editar){
+        return (
+            <TouchableOpacity onPress={()=>{console.log(idDir)}}>
+            <View style={styles.container}>
+                <View style={styles.descripciones}>
+               
+                <Text style={styles.texto}>
+                    {direccion}
+                </Text>
+                <Text style={styles.texto2}>
+                    {nombre}
+                </Text>
+                <Text style={styles.texto2}>
+                    {ciudad}
+                </Text>
+                <Text style={styles.texto2}>
+                    {depto}
+                </Text>
+                </View>
+                <View style={styles.icon}>
+                <Icon name={'chevron-right'} size={40}/>
+                </View>
+            </View>
+            </TouchableOpacity>
+
+
+        )
+    }
+
+    else{
+        
     return (
 
        
@@ -40,7 +72,7 @@ const TarjetaDireccion = ({idUsu,onPress,enviar=false,nombre,direccion,ciudad, d
             </View>
         </View>
         </TouchableOpacity>
-    )
+    ) }
 };
 const styles = StyleSheet.create({
 

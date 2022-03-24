@@ -28,6 +28,7 @@ const dataProducto = [
 const Pago = ({route})=> {
     const[productos,setProductos] = useState()
     const id = route.params.idUsuario
+    console.log (id);
     useEffect( async () => {
         var a = await obtenerCarrito(id);
         await setProductos(a)
@@ -144,7 +145,7 @@ const RenderFooter = (id)=>{
             </View>
             <View style={{width:'100%',flex:1, alignItems:'center'}}>
                 <View style={{width:'90%',flex:1, alignContent:'center'}}>
-                    <TarjetaDireccion idUsu={{id}} enviar={true} direccion={direccion.direccion} nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
+                    <TarjetaDireccion idUsu={id} enviar={true} direccion={direccion.direccion} nombre={direccion.Ciudades.codigoPostal} ciudad={direccion.Ciudades.nombre_ciudad} depto={direccion.Ciudades.Departamentos.nombreDepartamento} />
                 </View>
             </View>
             <View style={styles.containerTabla}>

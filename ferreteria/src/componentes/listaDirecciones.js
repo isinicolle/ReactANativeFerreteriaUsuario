@@ -20,14 +20,17 @@ const dataDireccion = [
     new Direccion(9,"Nallely Reyes","Juan Ramon Molina",'San Pedro Sula','Cortes'),
 ] 
 
-const ListaDireccion  = ({ onPress,text,tipo,id})=>{
+const ListaDireccion  = ({ onPress,text,tipo,id,editar=false})=>{
     const[direcciones,setDirecciones] = useState()
     useEffect( async () => {
-        var a = await obtenerdirecciones(id);
-        await setDirecciones(a)
+        var a = await obtenerdirecciones(id).then((data)=>{setDirecciones(data)});
       
       }, []);
-
+      const renderizarLista = ({item})=>{
+        return(
+            <TarjetaDireccion editar={editar} idDir={item.id_direccionEnvio} direccion={item.direccion} nombre={item.Ciudades.codigoPostal} ciudad={item.Ciudades.nombre_ciudad} depto={item.Ciudades.Departamentos.nombreDepartamento}/>
+        )
+    }
     return (
         <View style={{width:'100%',flex:1,flexDirection:'column'}}>
         <View style={styles.Lista}>
@@ -65,9 +68,5 @@ async function obtenerdirecciones(id){
     }
 }
 
-const renderizarLista = ({item})=>{
-    return(
-        <TarjetaDireccion  direccion={item.direccion} nombre={item.Ciudades.codigoPostal} ciudad={item.Ciudades.nombre_ciudad} depto={item.Ciudades.Departamentos.nombreDepartamento}/>
-    )
-}
+
 export default ListaDireccion
