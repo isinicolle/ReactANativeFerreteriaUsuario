@@ -25,7 +25,7 @@ const Pickers = ({label,items,selectedValue,setSelectedValue,text,icon})=>{
         selectedValue={selectedValue}
         onValueChange={(itemValue,itemIndex)=>{
         setSelectedValue(itemValue);
-        console.log(selectedValue);
+       
         }} 
         placeholder={text}>
 

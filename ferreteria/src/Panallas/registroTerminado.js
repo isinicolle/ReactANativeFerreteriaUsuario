@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import {Boton,HiperVinculo,TextBox,PasswordBox,Footer, Pickers} from '../componentes/'
 import { useState,useEffect } from 'react';
 
-const Pantalla = ()=> {
+const Pantalla = ({navigation})=> {
   const [selectedCiudad,setSelectedCiudad] = useState('');
   const [selectedDepartamento,setSelectedDepartamento]= useState('');
   const [ciudades,setCiudades] = useState('');
@@ -12,12 +12,13 @@ const Pantalla = ()=> {
 
   useEffect(()=>{
     fetchDepartamentos();
-  },[])
+  },[navigation])
 
   useEffect(()=>{
     fetchCiudades();
   },[selectedDepartamento])
-    
+
+  
   const fetchCiudades =async ()=>{
     if (selectedDepartamento.id_departamento)
     try
@@ -30,7 +31,7 @@ const Pantalla = ()=> {
           }
         }
       );
-      await res.json().then((data)=>{setCiudades(data); console.log(data)})
+      await res.json().then((data)=>{setCiudades(data);setSelectedCiudad(data[0])})
     }
     catch(err){
       console.log(err);
@@ -49,7 +50,7 @@ const Pantalla = ()=> {
           }
         }
       );
-      await res.json().then((data)=>{setDepartamentos(data)})
+      await res.json().then((data)=>{setDepartamentos(data);setSelectedDepartamento(data[0])})
     }
     catch(err){
       console.log(err);
@@ -74,7 +75,7 @@ const Pantalla = ()=> {
         <Pickers label={'nombreDepartamento'} selectedValue={selectedDepartamento} setSelectedValue={setSelectedDepartamento} items={departamentos} text={'Departamento'} icon={'city'} />
         <Pickers label={'nombre_ciudad'} selectedValue={selectedCiudad} setSelectedValue={setSelectedCiudad} items={ciudades}  text={'Ciudad'} icon={'city-variant'}/>
         <TextBox text={'Direccion'} icon={'home'} />
-        <Boton text={'Continuar'} />
+        <Boton text={'Continuar'} onPress={()=>{console.log(selectedCiudad)}} />
     </View>
     <Footer/>
   </SafeAreaView>
