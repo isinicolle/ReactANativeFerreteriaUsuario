@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 //Pantallas
-import { Login,CrearUsuario, AgregarDireccion, Condiciones, HistorialCompra, HistorialDetalle, MisionVision, Privacidad, Inicio, Producto, Config, ConfirmarCorreo, Direcciones, Carrito, Pago, OlvidarContra, RegistroTerminado, Busqueda, InformacionUsuario } from './index';
+import { Login, CrearUsuario, AgregarDireccion, EditarDireccion, Condiciones, HistorialCompra, HistorialDetalle, MisionVision, Privacidad, Inicio, Producto, Config, ConfirmarCorreo, Direcciones, Carrito, Pago, OlvidarContra, RegistroTerminado, Busqueda, InformacionUsuario } from './index';
 
 const Stack = createNativeStackNavigator();
 export default function Menu() {
@@ -14,6 +14,7 @@ export default function Menu() {
         <Stack.Screen name="Inicio" component={Inicio} />
         <Stack.Screen name="Producto" component={Producto} />
         <Stack.Screen name="AgregarDireccion" component={AgregarDireccion} />
+        <Stack.Screen name="EditarDireccion" component={EditarDireccion} />
         <Stack.Screen name="Condiciones" component={Condiciones} />
         <Stack.Screen name="HistorialCompra" component={HistorialCompra} />
         <Stack.Screen name="HistorialDetalle" component={HistorialDetalle} />
@@ -28,7 +29,7 @@ export default function Menu() {
         <Stack.Screen name="RegistroTerminado" component={RegistroTerminado} />
         <Stack.Screen name="Busqueda" component={Busqueda} />
         <Stack.Screen name="InformacionUsuario" component={InformacionUsuario} />
-        <Stack.Screen name="crearUsuario" component={CrearUsuario}/>
+        <Stack.Screen name="crearUsuario" component={CrearUsuario} />
       </Stack.Navigator>
     </NavigationContainer>
   );
